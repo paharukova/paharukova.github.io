@@ -527,6 +527,7 @@ p { margin: 0; text-wrap: pretty; }
 .foot-in { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px 40px; padding-top: 36px; padding-bottom: 40px; font-size: .9rem; }
 .foot-col { display: grid; gap: 6px; align-content: start; }
 .foot-col b { color: var(--ink); font-weight: 500; }
+.foot-note { padding-top: 18px; padding-bottom: 28px; border-top: 1px solid var(--line); color: var(--ink-2); font-size: .82rem; }
 .foot-col a { justify-self: start; border-bottom: 1px solid transparent; transition: color .2s, border-color .2s; }
 .foot-col a:hover { color: var(--ink); border-color: var(--gold); }
 @media (max-width: 760px) { .foot-in { grid-template-columns: 1fr; } }
