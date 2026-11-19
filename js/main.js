@@ -14,6 +14,16 @@
 
   // ⚙️ Контакты — поменять на свои
   var MAX = "https://max.ru/u/f9LHodD0cOJ_tmUglvRTNWrcXaifk9UuY4X419o49zy88yQsmVHHWd0ijb8";  // ссылка на мой профиль в MAX
+  var TG = "https://t.me/tatyana_p42";   // мой Telegram
+  /* Кнопка Telegram — временная простая ссылка: сайт через неё ничего не собирает.
+     После переезда на reg.ru её заменит форма заявки (данные — на хостинге в России,
+     в Telegram — только «Новая заявка №…» без имени и телефона).
+     Telegram открывается сразу с готовым текстом: https://t.me/ник?text=…
+     MAX так не умеет — для него текст копируем (см. ниже). */
+  function setText(a, text) {
+    a.dataset.text = text;
+    if (a.hasAttribute("data-tg")) a.href = TG + "?text=" + encodeURIComponent(text);
+  }
 
   /* ---------- Линия под шапкой при прокрутке ---------- */
   var nav = $(".nav");
@@ -101,7 +111,7 @@
   };
 
   var form = $(".builder-form"), input = $('input[name="biz"]', form), ms = $(".ms");
-  var after = $(".builder-after"), want = $("[data-want]");
+  var after = $(".builder-after"), want = $$("[data-want]");
   var sphereChips = $$("[data-sphere]", form), current = "beauty", timers = [], building = false;
 
   function bizName() { return input.value.trim() || SPHERES[current].def; }
@@ -163,7 +173,7 @@
   function done() {
     after.hidden = false;
     var text = "Здравствуйте, Татьяна! Хочу прототип сайта для «" + bizName().replace(/[«»]/g, "") + "» (" + SPHERES[current].label + ").";
-    want.dataset.text = text;
+    want.forEach(function (a) { setText(a, text); });
   }
 
   sphereChips.forEach(function (btn) {
@@ -211,7 +221,8 @@
      ================================================================ */
   var need = "", needChips = $$(".ask .chip");
   function updateLinks() {
-    $('[data-msg="max"]').dataset.text = "Здравствуйте, Татьяна! Нужен сайт" + (need ? ": " + need : "") + ". Мой бизнес: ";
+    var text = "Здравствуйте, Татьяна! Нужен сайт" + (need ? ": " + need : "") + ". Мой бизнес: ";
+    $$("[data-msg]").forEach(function (a) { setText(a, text); });
   }
   needChips.forEach(function (btn) {
     btn.addEventListener("click", function () {

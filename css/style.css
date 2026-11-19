@@ -544,3 +544,100 @@ p { margin: 0; text-wrap: pretty; }
 .cookie a { color: var(--ink); border-bottom: 1px solid var(--gold); }
 .cookie .pill { flex: none; min-height: 44px; padding: 0 20px; }
 @media (max-width: 520px) { .cookie { flex-direction: column; align-items: stretch; } .cookie .pill { justify-content: center; } }
+
+/* ================================================================
+   19.11: пометки «концепт / демо / в разработке», «Обо мне»,
+   телефон в «10 секундах» над текстом
+   ================================================================ */
+.p-type { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.badge {
+  display: inline-block; padding: 5px 11px 4px; border-radius: 999px;
+  font-weight: 700; font-size: .78rem; letter-spacing: .12em; line-height: 1.2;
+  color: var(--bg); background: var(--gold);
+}
+.badge-soon { color: var(--gold); background: transparent; box-shadow: inset 0 0 0 1.5px var(--gold); }
+
+/* сайт в разработке: ссылки нет, на скриншоте — плашка */
+.project-soon .shot { cursor: default; }
+.soon-label {
+  position: absolute; z-index: 3; top: clamp(36px, 5vw, 64px); right: clamp(14px, 2vw, 24px);
+  padding: 9px 16px; border-radius: 999px;
+  background: rgba(27, 34, 50, .88); box-shadow: inset 0 0 0 1px rgba(217, 187, 133, .6);
+  color: var(--gold); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase;
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+.more-off { color: var(--ink-2); cursor: default; }
+.more-off:hover { color: var(--ink-2); }
+
+/* Обо мне */
+.about { padding: var(--sec) 0; }
+.about-in { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 24px 56px; align-items: start; }
+.about-text { display: grid; gap: 18px; }
+.about-text > p { color: var(--ink-2); max-width: 38em; }
+.about-text > .about-lead { color: var(--ink); font-size: 1.2rem; line-height: 1.5; }
+.about-facts { list-style: none; margin: 14px 0 0; padding: 0; border-top: 1px solid var(--line); }
+.about-facts li { display: grid; grid-template-columns: 160px 1fr; gap: 6px 20px; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.about-facts b { font: 500 1.05rem/1.3 var(--f-d); }
+.about-facts span { color: var(--ink-2); }
+@media (max-width: 760px) {
+  .about-in { grid-template-columns: 1fr; }
+  .about-facts li { grid-template-columns: 1fr; }
+}
+.about > .wrap { position: relative; }
+.about > .wrap::before { content: ""; position: absolute; top: calc(-1 * var(--sec)); left: var(--gut); right: var(--gut); height: 1px; background: var(--line); }
+
+
+
+/* Телефон: на узком экране мини-сайт стоит сразу под кнопкой «Собрать сайт»,
+   а текст «Это набросок…» и кнопки — уже под телефоном */
+@media (max-width: 900px) {
+  .builder-in { row-gap: 0; }
+  .builder-text { display: contents; }
+  .builder-text > h2 { order: 1; }
+  .builder-lead { order: 2; }
+  .builder-form { order: 3; }
+  .phone { order: 4; margin-top: 44px; }
+  .builder-after { order: 5; margin-top: 40px; }
+}
+
+/* «В любой сайт входит» — список по пунктам */
+.extras { display: block; }
+.incl-list { list-style: none; margin: 16px 0 0; padding: 0; columns: 2; column-gap: 56px; max-width: 900px; }
+.incl-list li { break-inside: avoid; padding: 6px 0 6px 22px; position: relative; color: var(--ink-2); }
+.incl-list li::before { content: "—"; position: absolute; left: 0; color: var(--gold); }
+.extras .extras-note { margin-top: 18px; }
+@media (max-width: 700px) { .incl-list { columns: 1; } }
+
+/* Две кнопки мессенджеров одного размера (Telegram + MAX) */
+.btn-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 260px)); gap: 12px; }
+.btn-pair .gold { width: 100%; justify-content: space-between; }
+.builder-want { margin-top: 4px; color: var(--ink); }
+.builder-after .builder-cta { margin-top: 12px; }
+.builder-cta .btn-pair { flex: 1 1 100%; }
+@media (max-width: 520px) { .btn-pair { grid-template-columns: 1fr; } }
+
+/* Все пары кнопок — одинаковой ширины: обе по самой длинной надписи */
+.btn-pair, .actions { display: inline-grid; grid-template-columns: repeat(2, minmax(220px, 1fr)); gap: 12px; }
+.btn-pair > a, .actions > a { width: 100%; white-space: nowrap; justify-content: space-between; }
+.builder-cta .btn-pair { flex: 0 0 auto; }
+@media (max-width: 860px) {
+  .actions { display: grid; grid-template-columns: 1fr; width: 100%; }
+}
+@media (max-width: 520px) {
+  .btn-pair { display: grid; grid-template-columns: 1fr; width: 100%; }
+}
+
+
+/* «Обо мне» без фото: крупная фраза слева, текст справа, три карточки снизу */
+.about-in { align-items: end; }
+.about-side { display: grid; gap: 28px; }
+.about-side .about-lead { font: 400 clamp(1.35rem, 2.1vw, 1.75rem)/1.4 var(--f-d); color: var(--ink); letter-spacing: -.01em; max-width: 22em; }
+.about-side .about-lead b { font-weight: 500; }
+.about-text { gap: 16px; }
+.about-cards { list-style: none; margin: clamp(40px, 5vw, 64px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px); }
+.about-cards li { display: grid; gap: 10px; align-content: start; padding: clamp(22px, 2.6vw, 30px); background: var(--card); border: 1px solid var(--line); border-radius: 22px; }
+.about-cards b { color: var(--gold); font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; }
+.about-cards span { color: var(--ink); font-size: 1.05rem; line-height: 1.5; }
+@media (max-width: 760px) {
+  .about-cards { grid-template-columns: 1fr; }
+}
