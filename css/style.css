@@ -566,6 +566,11 @@ p { margin: 0; text-wrap: pretty; }
   color: var(--gold); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase;
   backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
 }
+/* две ссылки в одной карточке (квиз: «Открыть квиз» + «Открыть в Telegram») */
+.more-row { display: flex; flex-wrap: wrap; gap: 6px 34px; margin-top: auto; }
+.more-row .more { margin-top: 0; }
+.project-xl .more-row { margin-top: 26px; }
+@media (max-width: 860px) { .project-xl .more-row { margin-top: auto; padding-top: 22px; } }
 .more-off { color: var(--ink-2); cursor: default; }
 .more-off:hover { color: var(--ink-2); }
 
