@@ -9,7 +9,6 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-<!-- Превью для мессенджеров. paharukova.github.io заменяется настоящим доменом при сборке (sobrat-dlya-hostinga.py) -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:site_name" content="Татьяна Пахарукова">
@@ -20,12 +19,17 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<script>document.documentElement.classList.add("js");</script>
 <link rel="stylesheet" href="fonts/fonts.css?v=1">
+<!-- Шрифты мини-сайтов в «Ваш сайт за 10 секунд». Перед публикацией положить локально -->
+<link rel="stylesheet" href="fonts/mini/fonts.css">
 <link rel="stylesheet" href="css/style.css?v=31">
+<link rel="stylesheet" href="css/v2.css?v=14">
 </head>
 <body>
 
 <a class="skip" href="#works">К работам</a>
+<canvas class="page-sparks" aria-hidden="true"></canvas>
 
 <header class="nav">
   <div class="wrap nav-in">
@@ -33,8 +37,8 @@
     <nav class="nav-links" aria-label="Разделы">
       <a href="#works">Работы</a>
       <a href="#about">Обо мне</a>
-      <a href="#prices">Цены</a>
       <a href="#process">Как работаю</a>
+      <a href="#prices">Цены</a>
       <a href="#faq">Вопросы</a>
     </nav>
     <a class="gold gold-sm" href="#contact"><span>Написать</span></a>
@@ -49,7 +53,7 @@
     <div class="wrap hero-in">
       <div class="hero-photo"><img src="img/tatiana-hero.jpg" width="1100" height="1391" alt="Татьяна Пахарукова"></div>
       <div class="hero-text">
-        <h1>Расскажите о&nbsp;своём деле&nbsp;— покажу прототип вашего сайта. <b>Бесплатно</b></h1>
+        <h1>Расскажите о&nbsp;своём деле&nbsp;— покажу прототип вашего сайта. <b class="mark free">Бесплатно<svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 9C45 4 95 3 140 6s45 4 57-1"/></svg></b></h1>
         <p class="sub">Создаю сайты для малого бизнеса и&nbsp;специалистов. Работу начинаю с&nbsp;прототипа&nbsp;— первого варианта вашего сайта: его можно открыть и&nbsp;полистать на&nbsp;телефоне.</p>
         <div class="actions">
           <a class="gold" href="#contact"><span>Получить прототип</span><svg class="arrow" viewBox="0 0 40 10" aria-hidden="true"><path d="M0 5h39M34 1l5 4-5 4"/></svg></a>
@@ -64,15 +68,16 @@
   <section class="works" id="works">
     <div class="wrap">
       <div class="sec-head">
-        <h2>Работы</h2>
-        <p><b>Концепт</b>&nbsp;— сайт, который я&nbsp;сделала для настоящего специалиста.<br><b>Демо</b>&nbsp;— сайты для вымышленных компаний, на&nbsp;них я&nbsp;пробую идеи для разных сфер.<br><b>В&nbsp;разработке</b>&nbsp;— сайт, над которым я&nbsp;сейчас работаю для клиента.<br>Каждый готовый сайт можно открыть и&nbsp;полистать, на&nbsp;телефоне тоже.</p>
+        <h2><span class="mark">Работы<svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 9C45 4 95 3 140 6s45 4 57-1"/></svg></span></h2>
+        <p><b>Концепт</b>&nbsp;— сайт, который я&nbsp;сделала для настоящего специалиста.<br><b>Демо</b>&nbsp;— сайты для вымышленных компаний, на&nbsp;них я&nbsp;пробую идеи для разных сфер.<br><b>В&nbsp;разработке</b>&nbsp;— сайт, над которым я&nbsp;сейчас работаю для клиента.<br>Нажмите на&nbsp;картинку&nbsp;— сайт сам пролистается в&nbsp;окне.</p>
       </div>
 
       <div class="projects">
         <article class="project project-xl">
-          <a class="shot" href="https://paharukova.github.io/prototipy/irina-vasilyeva/final/" target="_blank" rel="noopener" aria-label="Открыть сайт Ирины Васильевой, агента по недвижимости">
+          <a class="shot" href="https://paharukova.github.io/prototipy/irina-vasilyeva/final/" target="_blank" rel="noopener" data-preview="irina" aria-label="Посмотреть сайт Ирины Васильевой, агента по недвижимости">
             <img class="shot-d" src="img/irina-bez-tekstury.jpg" width="1200" height="675" alt="" loading="lazy">
             <img class="shot-m" src="img/irina-bez-tekstury-m.jpg" width="390" height="844" alt="" loading="lazy">
+            <span class="shot-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Смотреть</span>
           </a>
           <div class="p-info">
             <p class="p-type">Лендинг <strong class="badge">концепт</strong></p>
@@ -82,7 +87,7 @@
           </div>
         </article>
 
-        <!-- Сайт в работе: ссылки нет, пока сайт не запущен. После запуска заменить div.shot на <a class="shot" href="…"> и вернуть «Открыть сайт» -->
+        <!-- Сайт в работе: ссылки нет, пока сайт не запущен -->
         <article class="project project-xl project-soon">
           <div class="shot">
             <img class="shot-d" src="img/sanepidaudit-espresso.jpg" width="1200" height="675" alt="" loading="lazy">
@@ -98,9 +103,10 @@
         </article>
 
         <article class="project">
-          <a class="shot" href="demo/vet-klinika/" target="_blank" rel="noopener" aria-label="Открыть демо-сайт ветклиники">
+          <a class="shot" href="demo/vet-klinika/" target="_blank" rel="noopener" data-preview="vet-klinika" aria-label="Посмотреть демо-сайт ветклиники">
             <img class="shot-d" src="img/vet-klinika.jpg" width="1200" height="675" alt="" loading="lazy">
             <img class="shot-m" src="img/vet-klinika-m.jpg" width="390" height="844" alt="" loading="lazy">
+            <span class="shot-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Смотреть</span>
           </a>
           <div class="p-info">
             <p class="p-type">Сайт с записью <strong class="badge">демо</strong></p>
@@ -111,9 +117,10 @@
         </article>
 
         <article class="project">
-          <a class="shot" href="demo/avtoshkola-poehali/" target="_blank" rel="noopener" aria-label="Открыть демо-сайт автошколы «Поехали!»">
+          <a class="shot" href="demo/avtoshkola-poehali/" target="_blank" rel="noopener" data-preview="avtoshkola-poehali" aria-label="Посмотреть демо-сайт автошколы «Поехали!»">
             <img class="shot-d" src="img/avtoshkola-poehali.jpg" width="1200" height="675" alt="" loading="lazy">
             <img class="shot-m" src="img/avtoshkola-poehali-m.jpg" width="390" height="844" alt="" loading="lazy">
+            <span class="shot-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Смотреть</span>
           </a>
           <div class="p-info">
             <p class="p-type">Лендинг с записью <strong class="badge">демо</strong></p>
@@ -124,9 +131,10 @@
         </article>
 
         <article class="project project-xl">
-          <a class="shot" href="demo/mebel-olha/" target="_blank" rel="noopener" aria-label="Открыть демо-сайт мебельной мастерской «Ольха»">
+          <a class="shot" href="demo/mebel-olha/" target="_blank" rel="noopener" data-preview="mebel-olha" aria-label="Посмотреть демо-сайт мебельной мастерской «Ольха»">
             <img class="shot-d" src="img/mebel-olha.jpg" width="1200" height="675" alt="" loading="lazy">
             <img class="shot-m" src="img/mebel-olha-m.jpg" width="390" height="844" alt="" loading="lazy">
+            <span class="shot-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Смотреть</span>
           </a>
           <div class="p-info">
             <p class="p-type">Сайт-каталог <strong class="badge">демо</strong></p>
@@ -137,9 +145,10 @@
         </article>
 
         <article class="project project-xl">
-          <a class="shot" href="demo/psiholog/" target="_blank" rel="noopener" aria-label="Открыть демо-сайт психолога Дарьи Лебедевой">
+          <a class="shot" href="demo/psiholog/" target="_blank" rel="noopener" data-preview="psiholog" aria-label="Посмотреть демо-сайт психолога Дарьи Лебедевой">
             <img class="shot-d" src="img/psiholog.jpg" width="1200" height="675" alt="" loading="lazy">
             <img class="shot-m" src="img/psiholog-m.jpg" width="390" height="844" alt="" loading="lazy">
+            <span class="shot-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Смотреть</span>
           </a>
           <div class="p-info">
             <p class="p-type">Сайт с записью <strong class="badge">демо</strong></p>
@@ -150,9 +159,10 @@
         </article>
 
         <article class="project project-xl">
-          <a class="shot" href="demo/kviz/" target="_blank" rel="noopener" aria-label="Открыть демо-квиз онлайн-школы «Шаг вперёд»">
+          <a class="shot" href="demo/kviz/" target="_blank" rel="noopener" data-preview="kviz" aria-label="Посмотреть демо-квиз онлайн-школы «Шаг вперёд»">
             <img class="shot-d" src="img/kviz-shag.jpg" width="1200" height="675" alt="" loading="lazy">
             <img class="shot-m" src="img/kviz-shag-m.jpg" width="390" height="844" alt="" loading="lazy">
+            <span class="shot-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Смотреть</span>
           </a>
           <div class="p-info">
             <p class="p-type">Квиз + мини-приложение Telegram <strong class="badge">демо</strong></p>
@@ -169,305 +179,268 @@
   </section>
 
   <!-- ===== Обо мне ===== -->
-  <section class="about" id="about">
-    <div class="wrap">
-      <div class="about-in">
-        <div class="about-side">
-          <h2>Обо мне</h2>
-          <p class="about-lead">Я, <b>Татьяна</b>, делаю сайты для малого бизнеса, частных специалистов и&nbsp;онлайн-школ.</p>
+  <!-- ===== Обо мне + почему стоит начать со мной (один раздел, 23.11, вариант А «плитки») ===== -->
+  <section class="about om" id="about">
+    <div class="wrap om-in">
+      <div class="om-photo" aria-hidden="true"><img src="img/tatiana-naklon.jpg" width="1000" height="1259" alt="" loading="lazy"></div>
+      <div class="om-right">
+        <h2><span class="mark">Обо&nbsp;мне<svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 9C45 4 95 3 140 6s45 4 57-1"/></svg></span></h2>
+        <div class="om-text">
+          <p>Я, <b>Татьяна</b>, делаю сайты для малого бизнеса, частных специалистов и&nbsp;онлайн-школ.</p>
+          <p>Прежде чем показать прототип, <b>разбираюсь в&nbsp;вашем деле</b>: смотрю сайты конкурентов, думаю, что важно увидеть вашим клиентам и&nbsp;что должно подтолкнуть их позвонить или записаться. Поэтому даже первый вариант я&nbsp;делаю <b>под ваш бизнес, а&nbsp;не&nbsp;по&nbsp;шаблону</b>.</p>
         </div>
-        <div class="about-text">
-          <p>Работаю одна, поэтому всё обсуждаете со&nbsp;мной напрямую: от&nbsp;первого сообщения до&nbsp;запуска.</p>
-          <p>Прежде чем показать прототип, разбираюсь в&nbsp;вашем деле: смотрю сайты конкурентов, думаю, что важно увидеть вашим клиентам и&nbsp;что должно подтолкнуть их позвонить или записаться. Поэтому даже первый вариант я&nbsp;делаю под ваш бизнес, а&nbsp;не&nbsp;по&nbsp;шаблону.</p>
-        </div>
+        <h3 class="om-h">Почему стоит начать <span>со&nbsp;мной</span></h3>
+        <ul class="om-grid">
+          <li class="om-tile om-gold"><span class="om-big">0&nbsp;₽</span><b>Прототип бесплатно</b><span>Сначала прототип вашего сайта. Не&nbsp;понравится&nbsp;— ничего не&nbsp;платите.</span></li>
+          <li class="om-tile"><span class="om-big">Лично</span><b>Без менеджеров</b><span>Вы пишете мне напрямую, без пересказов.</span></li>
+          <li class="om-tile"><span class="om-big">Понятно</span><b>Всё в&nbsp;договоре</b><span>Цену, сроки и&nbsp;список работ фиксируем до&nbsp;начала.</span></li>
+          <li class="om-tile"><span class="om-big">−20%</span><b>Первым клиентам</b><span>Скидка на&nbsp;сайт для первых клиентов.</span></li>
+        </ul>
       </div>
-      <ul class="about-cards">
-        <li><b>Где</b><span>Работаю удалённо, с&nbsp;любым городом России</span></li>
-        <li><b>Как оформляем</b><span>Я&nbsp;самозанятая: работаем по&nbsp;договору, после оплаты выдаю чек</span></li>
-        <li><b>Связь</b><span>MAX, Telegram, телефон или почта. Отвечаю в&nbsp;течение дня</span></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ===== Почему стоит начать со мной (сюда же встанут отзывы) ===== -->
-  <section class="why" id="why">
-    <div class="wrap why-in">
-      <div class="why-head">
-        <h2>Почему стоит начать со&nbsp;мной</h2>
-        <p>Прототип я&nbsp;делаю бесплатно. Если он&nbsp;вам понравится, начинаем работу над сайтом&nbsp;— оплачивается уже она.</p>
-      </div>
-      <ul class="rows">
-        <li><b>Бесплатно</b><span>Сначала прототип вашего сайта. Не&nbsp;понравится&nbsp;— ничего не&nbsp;платите.</span></li>
-        <li><b>Лично</b><span>Вы пишете мне напрямую, без менеджеров и&nbsp;пересказов.</span></li>
-        <li><b>Понятно</b><span>Цену, сроки и&nbsp;список работ фиксируем в&nbsp;договоре до&nbsp;начала. Всё, что сверх договора, обсуждаем и&nbsp;согласуем отдельно.</span></li>
-        <li><b>−20%</b><span>Скидка первым клиентам.</span></li>
-      </ul>
     </div>
     <!-- Отзыв: когда Ирина напишет отзыв на Авито, вставить сюда карточку с его текстом и ссылкой на Авито -->
   </section>
 
   <!-- ===== Ваш сайт за 10 секунд ===== -->
-  <section class="builder" id="try">
-    <div class="wrap builder-in">
-      <div class="builder-text">
-        <h2>Ваш сайт за&nbsp;10&nbsp;секунд</h2>
-        <p class="builder-lead">Впишите название и&nbsp;выберите сферу — соберу, как может начинаться ваш сайт.</p>
-        <form class="builder-form" novalidate>
-          <label class="field">
-            <span>Название бизнеса</span>
-            <input type="text" name="biz" maxlength="40" autocomplete="organization" placeholder="Например, Студия «Лепесток»">
-          </label>
-          <div class="field" role="group" aria-labelledby="sph-label">
-            <span id="sph-label">Сфера</span>
-            <div class="chips">
-              <button class="chip" type="button" data-sphere="beauty" aria-pressed="true">салон красоты</button>
-              <button class="chip" type="button" data-sphere="psy" aria-pressed="false">психолог</button>
-              <button class="chip" type="button" data-sphere="auto" aria-pressed="false">автосервис</button>
-              <button class="chip" type="button" data-sphere="law" aria-pressed="false">юрист</button>
-              <button class="chip" type="button" data-sphere="school" aria-pressed="false">онлайн-школа</button>
-              <button class="chip" type="button" data-sphere="cafe" aria-pressed="false">кафе, пекарня</button>
-            </div>
-          </div>
-          <button class="gold" type="submit"><span>Собрать сайт</span><svg class="arrow" viewBox="0 0 40 10" aria-hidden="true"><path d="M0 5h39M34 1l5 4-5 4"/></svg></button>
-        </form>
-        <div class="builder-after" hidden>
-          <p>Это набросок за&nbsp;10&nbsp;секунд. Настоящий прототип — с&nbsp;вашими услугами, ценами и&nbsp;фото — сделаю бесплатно, до&nbsp;оплаты.</p>
-          <div class="consent-box" data-consent>
-            <label class="consent"><input type="checkbox" data-agree="pd"><span>Даю <a href="soglasie.html" target="_blank">согласие на&nbsp;обработку персональных данных</a></span></label>
-            <label class="consent"><input type="checkbox" data-agree="policy"><span>Ознакомлен(а) с&nbsp;<a href="politika.html" target="_blank">политикой обработки персональных данных</a></span></label>
-            <p class="consent-err" aria-live="polite"></p>
-          </div>
-          <p class="builder-want">Хочу такой&nbsp;— напишите мне, где удобнее:</p>
-          <div class="builder-cta">
-            <div class="btn-pair">
-              <a class="gold" data-want data-tg data-gated href="https://t.me/tatyana_p42" target="_blank" rel="noopener"><span>Telegram</span><svg class="arrow" viewBox="0 0 40 10" aria-hidden="true"><path d="M0 5h39M34 1l5 4-5 4"/></svg></a>
-              <a class="gold" data-want data-gated data-copy href="https://max.ru/u/f9LHodD0cOJ_tmUglvRTNWrcXaifk9UuY4X419o49zy88yQsmVHHWd0ijb8" target="_blank" rel="noopener"><span>MAX</span><svg class="arrow" viewBox="0 0 40 10" aria-hidden="true"><path d="M0 5h39M34 1l5 4-5 4"/></svg></a>
-            </div>
-            <a class="more" href="#contact">Другой способ связи</a>
-          </div>
-          <p class="copy-note" aria-live="polite"></p>
+  <section class="builder b10" id="try">
+    <div class="wrap b10-grid">
+      <div class="b10-left">
+        <h2>Ваш сайт за&nbsp;<span class="mark nw"><span class="ten">10</span>&nbsp;секунд<svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 9C45 4 95 3 140 6s45 4 57-1"/></svg></span></h2>
+        <p class="builder-lead">Выберите сферу и&nbsp;впишите название&nbsp;— соберу, как может начинаться ваш сайт</p>
+        <div class="builder-after">
+        <p>Это набросок. Настоящий прототип&nbsp;— с&nbsp;вашими услугами, ценами и&nbsp;фото&nbsp;— сделаю бесплатно.</p>
+        <p class="builder-want">Хочу такой&nbsp;— напишите мне, где удобнее:</p>
+        <div class="builder-cta">
+        <div class="btn-pair">
+        <a class="gold" data-want data-tg href="https://t.me/tatyana_p42" target="_blank" rel="noopener"><span>Telegram</span><svg class="arrow" viewBox="0 0 40 10" aria-hidden="true"><path d="M0 5h39M34 1l5 4-5 4"/></svg></a>
+        <a class="gold" data-want data-copy href="https://max.ru/u/f9LHodD0cOJ_tmUglvRTNWrcXaifk9UuY4X419o49zy88yQsmVHHWd0ijb8" target="_blank" rel="noopener"><span>MAX</span><svg class="arrow" viewBox="0 0 40 10" aria-hidden="true"><path d="M0 5h39M34 1l5 4-5 4"/></svg></a>
+        </div>
+        <a class="more" href="#contact">Другой способ связи</a>
+        </div>
+        <p class="copy-note" aria-live="polite"></p>
         </div>
       </div>
-
-      <div class="phone" aria-live="polite">
-        <div class="phone-screen">
-          <div class="ms" data-sphere="beauty">
-            <div class="ms-progress" aria-hidden="true"><i></i></div>
-            <div class="ms-nav ms-el"><span class="ms-logo"></span><b class="ms-name">Студия «Лепесток»</b><span class="ms-burger" aria-hidden="true"></span></div>
-            <div class="ms-hero ms-el">
-              <span class="ms-shape" aria-hidden="true"></span>
-              <p class="ms-kick"></p>
-              <p class="ms-title"></p>
-              <p class="ms-sub"></p>
-              <span class="ms-btn"></span>
+      <form class="builder-form b10-orbit" novalidate>
+        <svg class="wires" aria-hidden="true"></svg>
+        <div class="phone-stage">
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="ms" aria-live="polite"></div>
             </div>
-            <ul class="ms-list">
-              <li class="ms-el"><span></span><b></b></li>
-              <li class="ms-el"><span></span><b></b></li>
-              <li class="ms-el"><span></span><b></b></li>
-            </ul>
-            <div class="ms-bar ms-el"><span class="ms-btn ms-btn-full"></span></div>
           </div>
         </div>
+        <div class="side">
+          <div class="sp" data-sp="beauty"><button class="sp-pick" type="button" data-sphere="beauty" aria-pressed="false"><b>Салон красоты</b></button></div>
+          <div class="sp" data-sp="psy"><button class="sp-pick" type="button" data-sphere="psy" aria-pressed="false"><b>Психолог</b></button></div>
+          <div class="sp" data-sp="auto"><button class="sp-pick" type="button" data-sphere="auto" aria-pressed="false"><b>Автосервис</b></button></div>
+          <div class="sp" data-sp="law"><button class="sp-pick" type="button" data-sphere="law" aria-pressed="false"><b>Юрист</b></button></div>
+          <div class="sp" data-sp="school"><button class="sp-pick" type="button" data-sphere="school" aria-pressed="false"><b>Онлайн-школа</b></button></div>
+          <div class="sp" data-sp="cafe"><button class="sp-pick" type="button" data-sphere="cafe" aria-pressed="false"><b>Кафе, пекарня</b></button></div>
+        </div>
+        <label class="sp-name">
+          <span class="sp-name-l">Название салона</span>
+          <input type="text" name="biz" maxlength="26" autocomplete="off" placeholder="Например, Лепесток">
+        </label>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== Как я работаю + что входит (23.11, по образцу «шаги-вкладки») =====
+       Блок закрепляется на экране, колёсико листает шаги вбок; после 4-го шага страница едет дальше. -->
+  <section class="process kr" id="process">
+    <div class="kr-pin">
+      <div class="wrap kr-panel">
+        <div class="kr-head">
+          <h2>Как я&nbsp;<span class="mark">работаю<svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 9C45 4 95 3 140 6s45 4 57-1"/></svg></span></h2>
+          <p class="kr-sub">От&nbsp;первого сообщения до&nbsp;первой заявки&nbsp;— и&nbsp;что входит в&nbsp;каждый шаг</p>
+        </div>
+        <div class="kr-road">
+          <span class="kr-road-line"></span><span class="kr-road-fill"></span>
+          <button class="kr-pt on" type="button" data-k="0"><span class="kr-dot"></span><b>Знакомимся</b><small>шаг 1</small></button>
+          <button class="kr-pt" type="button" data-k="1"><span class="kr-dot"></span><b>Прототип</b><small>шаг 2</small></button>
+          <button class="kr-pt" type="button" data-k="2"><span class="kr-dot"></span><b>Создаю сайт</b><small>шаг 3</small></button>
+          <button class="kr-pt" type="button" data-k="3"><span class="kr-dot"></span><b>Запускаем</b><small>шаг 4</small></button>
+        </div>
+        <div class="kr-box">
+          <div class="kr-view"><div class="kr-track">
+          <article class="kr-step on" data-st="0">
+            <span class="kr-tag">Шаг 1</span><h3>Знакомимся</h3>
+            <p class="kr-lead">Вы пишете мне и&nbsp;рассказываете о&nbsp;бизнесе</p>
+            <ul class="kr-chk">
+              <li><b>Задаю вопросы:</b> <span>кто ваши клиенты, что они должны сделать на&nbsp;сайте</span></li>
+              <li><b>Анализ конкурентов:</b> <span>что у&nbsp;похожих компаний сделано хорошо, чего не&nbsp;хватает</span></li>
+              <li><b>Продуманная структура:</b> <span>план страницы, чтобы посетитель позвонил или записался</span></li>
+            </ul>
+          </article>
+          <article class="kr-step kr-free" data-st="1">
+            <span class="kr-zero">0&nbsp;₽</span><span class="kr-tag">Шаг 2</span><h3>Показываю прототип</h3>
+            <p class="kr-lead">Черновик сайта под ваш бизнес&nbsp;— бесплатно</p>
+            <ul class="kr-chk">
+              <li><b>Собираю черновик</b> <span>по&nbsp;плану страницы</span></li>
+              <li><b>Пишу первые тексты</b> <span>по&nbsp;вашим ответам</span></li>
+              <li><b>Присылаю ссылку:</b> <span>можно открыть на&nbsp;телефоне и&nbsp;компьютере</span></li>
+            </ul>
+            <p class="kr-res">Не&nbsp;понравится&nbsp;— <b>ничего не&nbsp;платите</b>: можно попросить другой вариант или отказаться</p>
+          </article>
+          <article class="kr-step" data-st="2">
+            <span class="kr-tag">Шаг 3</span><h3>Создаю сайт</h3>
+            <p class="kr-lead">Если прототип нравится: договор и&nbsp;предоплата</p>
+            <ul class="kr-chk">
+              <li><b>Дизайн под ваш бизнес:</b> <span>цвета, шрифты, ваши фото</span></li>
+              <li><b>Помощь с&nbsp;текстами:</b> <span>дорабатываю ваши, чтобы читались легко</span></li>
+              <li><b>Версия для телефона:</b> <span>удобно и&nbsp;с&nbsp;компьютера, и&nbsp;с&nbsp;телефона</span></li>
+              <li><b>Два круга правок:</b> <span>дважды собираю ваши замечания и&nbsp;вношу</span></li>
+            </ul>
+          </article>
+          <article class="kr-step" data-st="3">
+            <span class="kr-tag">Шаг 4</span><h3>Запускаем</h3>
+            <p class="kr-lead">Сайт работает, клиенты оставляют заявки</p>
+            <ul class="kr-chk">
+              <li><b>Подключаю адрес сайта</b> <span>и&nbsp;проверяю на&nbsp;телефонах и&nbsp;компьютерах</span></li>
+              <li><b>Все доступы у&nbsp;вас</b></li>
+              <li><b>3&nbsp;месяца мелких правок бесплатно:</b> <span>опечатки, цены, телефон, часы работы</span></li>
+            </ul>
+            <p class="kr-res kr-small">Новый блок или замена фотографий после запуска&nbsp;— за&nbsp;отдельную плату, стоимость обсуждаем заранее.</p>
+          </article>
+          </div></div>
+          <div class="kr-side"><div class="kr-bw-wrap"><div class="kr-bw" data-st="0" id="krBw"></div></div></div>
+        </div>
+        <p class="kr-hint" aria-hidden="true"><span class="kr-mouse"><i></i></span>листайте вниз&nbsp;— шаги сменяются</p>
       </div>
     </div>
   </section>
 
   <!-- ===== Цены ===== -->
-  <section class="prices" id="prices">
+  <section class="prices prc" id="prices">
     <div class="wrap">
-      <div class="sec-head">
-        <h2>Цены</h2>
-        <p>Точную цену назову после нашего с&nbsp;вами общения.<br>Она зависит от&nbsp;числа страниц, дизайна и&nbsp;того, что у&nbsp;вас уже есть.</p>
-      </div>
-      <ul class="price-list">
-        <li class="price">
-          <div class="price-name"><h3>Сайт-визитка</h3><p>Одна страница: кто вы, услуги, цены, контакты и&nbsp;карта. Для мастеров, репетиторов, психологов.</p></div>
-          <p class="price-time">около недели</p>
-          <p class="price-sum"><small>от</small> 10&nbsp;000&nbsp;₽</p>
-        </li>
-        <li class="price">
-          <div class="price-name"><h3>Лендинг</h3><p>Продающая страница под одну услугу или курс: выгоды, ответы на&nbsp;вопросы, форма заявки.</p></div>
-          <p class="price-time">1–2 недели</p>
-          <p class="price-sum"><small>от</small> 15&nbsp;000&nbsp;₽</p>
-        </li>
-        <li class="price">
-          <div class="price-name"><h3>Сайт с онлайн-записью</h3><p>Услуги, мастера и&nbsp;запись на&nbsp;удобное время. Для салонов, клиник, автосервисов, студий.</p></div>
-          <p class="price-time">2–3 недели</p>
-          <p class="price-sum"><small>от</small> 25&nbsp;000&nbsp;₽</p>
-        </li>
-        <li class="price">
-          <div class="price-name"><h3>Каталог или магазин</h3><p>Товары с&nbsp;фото и&nbsp;ценами, карточки, корзина или заявка. Для магазинов и&nbsp;производств.</p></div>
-          <p class="price-time">от 3 недель</p>
-          <p class="price-sum"><small>от</small> 40&nbsp;000&nbsp;₽</p>
-        </li>
-      </ul>
-      <div class="extras">
-        <p class="extras-title">В любой сайт входит:</p>
-        <ul class="incl-list">
-          <li>анализ конкурентов</li>
-          <li>продуманная структура</li>
-          <li>помощь с&nbsp;текстами</li>
-          <li>дизайн под ваш бизнес</li>
-          <li>версия для телефона</li>
-          <li>два круга правок</li>
-          <li>мелкие правки 3&nbsp;месяца после запуска бесплатно</li>
-        </ul>
-        <p class="extras-note">Новый блок или замена фотографий после запуска — за&nbsp;отдельную плату, стоимость обсуждаем заранее.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Как работаю ===== -->
-  <section class="process" id="process">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Как я работаю</h2>
-        <p>Листайте — и&nbsp;смотрите, как рождается сайт: от&nbsp;первого разговора до&nbsp;первой заявки.</p>
-      </div>
-      <div class="story">
-        <ol class="steps">
-          <li class="step" data-stage="0">
-            <h3>Знакомимся</h3>
-            <p>Вы пишете мне и&nbsp;рассказываете о&nbsp;бизнесе. Я&nbsp;задаю вопросы: кто ваши клиенты, что они должны сделать на&nbsp;сайте. Из&nbsp;ответов рождается план страницы.</p>
-          </li>
-          <li class="step" data-stage="1">
-            <h3>Показываю прототип</h3>
-            <p>Делаю черновик сайта под ваш бизнес и&nbsp;присылаю ссылку. Это бесплатно и&nbsp;ни&nbsp;к&nbsp;чему не&nbsp;обязывает.</p>
-          </li>
-          <li class="step" data-stage="2">
-            <h3>Доводим до готовности</h3>
-            <p>Если прототип нравится, договариваемся о&nbsp;цене. Добавляю ваши тексты, фото и&nbsp;цвета, правлю, пока всё не&nbsp;станет как надо.</p>
-          </li>
-          <li class="step" data-stage="3">
-            <h3>Запускаем</h3>
-            <p>Подключаю адрес сайта, проверяю на&nbsp;телефонах и&nbsp;компьютерах. Сайт работает, все доступы у&nbsp;вас, а&nbsp;клиенты начинают оставлять заявки.</p>
-          </li>
-        </ol>
-        <div class="stage-wrap" aria-hidden="true">
-          <div class="bf s0">
-            <div class="bf-bar"><i></i><i></i><i></i><span class="bf-url"><em class="bf-draft">план страницы</em><em class="bf-proto">прототип · черновик</em><em class="bf-color">прототип · в работе</em><em class="bf-live">flora-masterskaya.ru</em></span></div>
-            <div class="bf-page">
-              <div class="bf-nav"><b class="bf-t">Флора</b><span class="bf-links"><i class="bf-t">Букеты</i><i class="bf-t">Доставка</i><i class="bf-t">Контакты</i></span><span class="bf-btn bf-t">Заказать</span></div>
-              <div class="bf-hero">
-                <div class="bf-copy">
-                  <p class="bf-h bf-t">Букеты с&nbsp;доставкой за&nbsp;2&nbsp;часа</p>
-                  <p class="bf-p bf-t">Соберём под ваш повод и&nbsp;привезём к&nbsp;нужному времени</p>
-                  <span class="bf-btn bf-btn-big bf-t">Выбрать букет</span>
-                </div>
-                <div class="bf-img"><span class="f1"></span><span class="f2"></span><span class="f3"></span><span class="stem"></span></div>
-              </div>
-              <div class="bf-cards">
-                <div class="bf-card"><span class="bf-t">Розы</span><b class="bf-t">от 2&nbsp;900&nbsp;₽</b></div>
-                <div class="bf-card"><span class="bf-t">Пионы</span><b class="bf-t">от 3&nbsp;500&nbsp;₽</b></div>
-                <div class="bf-card"><span class="bf-t">Сезонные</span><b class="bf-t">от 1&nbsp;900&nbsp;₽</b></div>
-              </div>
+      <h2><span class="mark">Цены<svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 9C45 4 95 3 140 6s45 4 57-1"/></svg></span></h2>
+      <div class="prc-box">
+        <div class="prc-tabs" role="tablist" aria-label="Вид сайта">
+          <button class="prc-tab" type="button" role="tab" aria-selected="true" data-i="0"><b>Сайт-визитка</b><small>от&nbsp;10&nbsp;000&nbsp;₽</small></button>
+          <button class="prc-tab" type="button" role="tab" aria-selected="false" data-i="1"><b>Лендинг</b><small>от&nbsp;15&nbsp;000&nbsp;₽</small></button>
+          <button class="prc-tab" type="button" role="tab" aria-selected="false" data-i="2"><b>С&nbsp;онлайн-записью</b><small>от&nbsp;25&nbsp;000&nbsp;₽</small></button>
+          <button class="prc-tab" type="button" role="tab" aria-selected="false" data-i="3"><b>Каталог, магазин</b><small>от&nbsp;40&nbsp;000&nbsp;₽</small></button>
+        </div>
+        <div class="prc-panel" role="tabpanel" aria-live="polite">
+          <div class="prc-info">
+            <h3 class="prc-name">Сайт-визитка</h3>
+            <p class="prc-sum"><small>от</small><b class="prc-num">10&nbsp;000</b>&nbsp;₽</p>
+            <p class="prc-desc">Одна страница: кто вы, услуги, цены, контакты и&nbsp;карта. Для мастеров, репетиторов, психологов.</p>
+            <div class="prc-weeks">
+              <p class="prc-weeks-top"><span>срок</span><b class="prc-time">около недели</b></p>
+              <div class="prc-bar"><i></i></div>
+              <p class="prc-scale"><span>1&nbsp;нед.</span><span>2</span><span>3</span><span>4</span></p>
             </div>
-            <div class="bf-toast"><span class="bf-dot"></span><div><b>Новая заявка</b><span>Марина · букет на&nbsp;субботу</span></div></div>
           </div>
-          <p class="stage-label"><span class="l0">1 · план</span><span class="l1">2 · прототип</span><span class="l2">3 · цвета и&nbsp;фото</span><span class="l3">4 · сайт работает</span></p>
+          <div class="prc-mini" aria-hidden="true"><div class="prc-view"><div class="prc-page"></div></div></div>
         </div>
       </div>
+      <p class="prc-note">Точную цену назову после нашего с&nbsp;вами общения. Она зависит от&nbsp;числа страниц, дизайна и&nbsp;того, что у&nbsp;вас уже есть.</p>
     </div>
   </section>
 
-  <!-- ===== Вопросы ===== -->
-  <section class="faq" id="faq">
-    <div class="wrap faq-in">
-      <h2>Вопросы</h2>
-      <div class="qa">
-        <details>
-          <summary>Сколько времени займёт сайт?</summary>
-          <p>Визитка — около недели, лендинг — 1–2 недели, магазин — от&nbsp;трёх недель. Сильнее всего сроки зависят от&nbsp;того, как быстро готовы тексты и&nbsp;фото.</p>
-        </details>
-        <details>
-          <summary>Что нужно от меня?</summary>
-          <p>Рассказать о&nbsp;своём деле и&nbsp;прислать то, что есть: логотип, фото, цены, контакты. Если чего-то нет, подскажу, где взять, и&nbsp;помогу с&nbsp;текстами.</p>
-        </details>
-        <details>
-          <summary>Что такое домен и хостинг и сколько они стоят?</summary>
-          <p>Домен — это адрес сайта, например, vash-salon.ru. Хостинг — место в&nbsp;интернете, где сайт хранится. Помогу выбрать и&nbsp;подключить, а&nbsp;оплачиваете вы их напрямую, обычно это несколько тысяч рублей в&nbsp;год.</p>
-        </details>
-        <details>
-          <summary>Вы работаете только в моём городе?</summary>
-          <p>Нет, я&nbsp;работаю удалённо с&nbsp;любым городом: всё обсуждаем в&nbsp;мессенджере или по&nbsp;телефону.</p>
-        </details>
-        <details>
-          <summary>Что входит в бесплатные правки?</summary>
-          <p>Три месяца после запуска бесплатно поправлю мелочи: опечатки, цены, телефон, часы работы, пару строк текста. Новый блок или замена фотографий — за&nbsp;отдельную плату, стоимость обсуждаем заранее.</p>
-        </details>
-        <details>
-          <summary>А если прототип мне не понравится?</summary>
-          <p>Тогда вы ничего не&nbsp;платите. Можно попросить другой вариант или просто отказаться.</p>
-        </details>
+  <!-- ===== Вопросы (23.11): строка поиска, как в Яндексе =====
+       Вопросы сами печатаются в строке; человек вводит своё — выпадают подсказки, ответ появляется карточкой.
+       Вопросы и ответы — в js/v2.js (массив QS). -->
+  <section class="faq qs" id="faq">
+    <div class="wrap">
+      <h2><span class="mark">Вопросы<svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 9C45 4 95 3 140 6s45 4 57-1"/></svg></span></h2>
+      <p class="qs-sub">Самое частое, что спрашивают перед началом работы</p>
+      <div class="qs-box">
+        <form class="qs-field" id="qsForm" autocomplete="off" role="search">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+          <input id="qsIn" type="text" aria-label="Ваш вопрос" placeholder="Например: сколько стоит домен?">
+          <button class="qs-go" type="submit">Найти</button>
+        </form>
+        <ul class="qs-sug" id="qsSug" hidden></ul>
+        <div class="qs-pop" id="qsPop"><span>Часто ищут:</span></div>
+        <div id="qsAns" aria-live="polite"></div>
       </div>
     </div>
   </section>
 
   <!-- ===== Контакты ===== -->
-  <section class="contact" id="contact">
-    <div class="contact-photo" aria-hidden="true"><img src="img/tatiana-kontakty-3.jpg" width="1041" height="1511" alt="" loading="lazy"></div>
-    <div class="wrap contact-in">
-      <div class="contact-text">
-        <h2>Начать просто&nbsp;— напишите мне</h2>
-        <div class="ask" role="group" aria-labelledby="ask-label">
-          <p id="ask-label">Какой сайт нужен?</p>
-          <div class="chips">
-            <button class="chip" type="button" data-need="сайт-визитка" aria-pressed="false">сайт-визитка</button>
-            <button class="chip" type="button" data-need="лендинг" aria-pressed="false">лендинг</button>
-            <button class="chip" type="button" data-need="многостраничный сайт" aria-pressed="false">многостраничный сайт</button>
-            <button class="chip" type="button" data-need="онлайн-магазин" aria-pressed="false">онлайн-магазин</button>
-            <button class="chip" type="button" data-need="пока не знаю, нужен совет" aria-pressed="false">пока не знаю</button>
+  <section class="contact kc" id="contact">
+    <div class="wrap">
+      <!-- Золотая линия перед последним блоком: рисуется, когда долистали, и рассыпается искорками -->
+      <div class="kl" id="kLine" aria-hidden="true"><svg viewBox="0 0 1000 14" preserveAspectRatio="none"><defs><linearGradient id="klG" x1="0" x2="1"><stop offset="0" stop-color="#d9bb85" stop-opacity="0"/><stop offset=".3" stop-color="#d9bb85"/><stop offset="1" stop-color="#f1d9a6"/></linearGradient></defs><path pathLength="1" d="M0 8C200 3 420 2 600 6s300 5 400 0"/></svg><i class="kl-spark" style="--dx:18px;--dy:-22px"></i><i class="kl-spark" style="--dx:28px;--dy:-6px"></i><i class="kl-spark" style="--dx:24px;--dy:14px"></i><i class="kl-spark" style="--dx:10px;--dy:26px"></i><i class="kl-spark" style="--dx:-6px;--dy:-26px"></i><i class="kl-spark" style="--dx:32px;--dy:22px"></i><i class="kl-spark" style="--dx:14px;--dy:-34px"></i><i class="kl-spark" style="--dx:-12px;--dy:20px"></i></div>
+      <!-- Золотая сцена: карточка с рамкой, по рамке бежит огонёк -->
+      <div class="kc-card">
+        <div class="contact-text">
+          <h2>Начать просто&nbsp;— <span class="mark nw">напишите мне<svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 9C45 4 95 3 140 6s45 4 57-1"/></svg></span></h2>
+          <p class="contact-note contact-lead">Отвечаю в&nbsp;течение дня. Первое сообщение можно начать с&nbsp;«Здравствуйте, нужен сайт»&nbsp;— дальше я&nbsp;сама задам вопросы.</p>
+          <div class="ask" role="group" aria-labelledby="ask-label">
+            <p id="ask-label">Какой сайт нужен?</p>
+            <div class="chips">
+              <button class="chip" type="button" data-need="сайт-визитка" aria-pressed="false">сайт-визитка</button>
+              <button class="chip" type="button" data-need="лендинг" aria-pressed="false">лендинг</button>
+              <button class="chip" type="button" data-need="многостраничный сайт" aria-pressed="false">многостраничный сайт</button>
+              <button class="chip" type="button" data-need="онлайн-магазин" aria-pressed="false">онлайн-магазин</button>
+              <button class="chip" type="button" data-need="пока не знаю, нужен совет" aria-pressed="false">пока не знаю</button>
+            </div>
           </div>
+          <!-- Telegram — простая ссылка, временно. Когда сайт будет на reg.ru, её заменит форма заявки -->
+          <div class="messengers btn-pair">
+            <a class="gold" data-msg="tg" data-tg href="https://t.me/tatyana_p42" target="_blank" rel="noopener"><span>Telegram</span><svg class="arrow" viewBox="0 0 40 10" aria-hidden="true"><path d="M0 5h39M34 1l5 4-5 4"/></svg></a>
+            <a class="gold" data-msg="max" data-copy href="https://max.ru/u/f9LHodD0cOJ_tmUglvRTNWrcXaifk9UuY4X419o49zy88yQsmVHHWd0ijb8" target="_blank" rel="noopener"><span>MAX</span><svg class="arrow" viewBox="0 0 40 10" aria-hidden="true"><path d="M0 5h39M34 1l5 4-5 4"/></svg></a>
+          </div>
+          <p class="copy-note" aria-live="polite"></p>
+          <p class="contact-direct">
+            <a href="tel:+79059014088">+7 905 901-40-88</a>
+            <a href="mailto:ts_paharukova@mail.ru">ts_paharukova@mail.ru</a>
+          </p>
         </div>
-        <div class="consent-box" data-consent>
-          <label class="consent"><input type="checkbox" data-agree="pd"><span>Даю <a href="soglasie.html" target="_blank">согласие на&nbsp;обработку персональных данных</a></span></label>
-          <label class="consent"><input type="checkbox" data-agree="policy"><span>Ознакомлен(а) с&nbsp;<a href="politika.html" target="_blank">политикой обработки персональных данных</a></span></label>
-          <p class="consent-err" aria-live="polite"></p>
-        </div>
-        <!-- Telegram — простая ссылка, временно. Когда сайт будет на reg.ru, её заменит форма заявки (в Telegram — только номер заявки) -->
-        <div class="messengers btn-pair">
-          <a class="gold" data-msg="tg" data-tg data-gated href="https://t.me/tatyana_p42" target="_blank" rel="noopener"><span>Telegram</span><svg class="arrow" viewBox="0 0 40 10" aria-hidden="true"><path d="M0 5h39M34 1l5 4-5 4"/></svg></a>
-          <a class="gold" data-msg="max" data-gated data-copy href="https://max.ru/u/f9LHodD0cOJ_tmUglvRTNWrcXaifk9UuY4X419o49zy88yQsmVHHWd0ijb8" target="_blank" rel="noopener"><span>MAX</span><svg class="arrow" viewBox="0 0 40 10" aria-hidden="true"><path d="M0 5h39M34 1l5 4-5 4"/></svg></a>
-        </div>
-        <p class="copy-note" aria-live="polite"></p>
-        <p class="contact-direct">
-          <a href="tel:+79059014088">+7 905 901-40-88</a>
-          <a href="mailto:ts_paharukova@mail.ru">ts_paharukova@mail.ru</a>
-        </p>
-        <p class="contact-note">Отвечаю в&nbsp;течение дня. Первое сообщение можно начать с&nbsp;«Здравствуйте, нужен сайт» — дальше я&nbsp;сама задам вопросы.</p>
+        <div class="kc-photo" aria-hidden="true"><img src="img/tatiana-kontakty-3.jpg" width="1041" height="1511" alt="" loading="lazy"></div>
       </div>
     </div>
   </section>
 </main>
 
-<footer class="foot">
-  <div class="wrap foot-in">
-    <div class="foot-col">
-      <b>Татьяна Пахарукова</b>
-      <span>Сайты для малого бизнеса и специалистов</span>
-      <span>Самозанятая</span>
-    </div>
-    <div class="foot-col">
-      <a href="tel:+79059014088">+7 905 901-40-88</a>
-      <a href="mailto:ts_paharukova@mail.ru">ts_paharukova@mail.ru</a>
-      <a data-max-link href="https://max.ru/u/f9LHodD0cOJ_tmUglvRTNWrcXaifk9UuY4X419o49zy88yQsmVHHWd0ijb8" target="_blank" rel="noopener">MAX</a>
-      <a href="https://t.me/tatyana_p42" target="_blank" rel="noopener">Telegram</a>
-    </div>
-    <div class="foot-col">
-      <a href="politika.html">Политика обработки персональных данных</a>
-      <a href="soglasie.html">Согласие на обработку персональных данных</a>
-      <span>© 2026</span>
-    </div>
+<!-- Подвал (23.11, вариант А «одна строка»): тихий, без повтора контактов — они в золотой карточке выше -->
+<footer class="foot ft">
+  <div class="wrap ft-row">
+    <div class="ft-who"><b>Татьяна Пахарукова</b><span>Сайты для малого бизнеса · самозанятая</span></div>
+    <nav class="ft-menu" aria-label="Разделы внизу страницы">
+      <a href="#works">Работы</a><a href="#about">Обо мне</a><a href="#process">Как работаю</a><a href="#prices">Цены</a><a href="#faq">Вопросы</a>
+    </nav>
+    <button class="ft-up" type="button" data-up>Наверх<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
   </div>
-  <p class="wrap foot-note">Информация на&nbsp;сайте, в&nbsp;том числе цены, не&nbsp;является публичной офертой. Точные условия, сроки и&nbsp;стоимость — в&nbsp;договоре.</p>
+  <div class="wrap ft-legal">
+    <a href="politika.html">Политика обработки персональных данных</a>
+    <a href="soglasie.html">Согласие на&nbsp;обработку данных</a>
+    <span>Информация на&nbsp;сайте, в&nbsp;том числе цены, не&nbsp;является публичной офертой. Точные условия, сроки и&nbsp;стоимость&nbsp;— в&nbsp;договоре.</span>
+    <span>© 2026</span>
+  </div>
 </footer>
 
+<!-- ===== Окно просмотра работы: сайт сам листается ===== -->
+<dialog class="pv" aria-labelledby="pv-title">
+  <div class="pv-box">
+    <div class="pv-head">
+      <div class="pv-name"><p class="pv-type"></p><h3 id="pv-title"></h3></div>
+      <div class="pv-actions">
+        <button class="pv-btn pv-play" type="button" aria-label="Пауза">
+          <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+          <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          <svg class="i-again" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12a7 7 0 1 0 2.1-5M5 4v4h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="pv-btn pv-close" type="button" aria-label="Закрыть"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+    </div>
+    <div class="pv-frame">
+      <div class="pv-bar" aria-hidden="true"><i></i><i></i><i></i><span class="pv-url"></span></div>
+      <div class="pv-view" tabindex="0" aria-label="Страница сайта, листается сама"><img class="pv-img" alt=""><iframe class="pv-live" title="Демо-квиз" hidden></iframe></div>
+      <div class="pv-progress" aria-hidden="true"><i></i></div>
+    </div>
+    <p class="pv-hint"><span class="h-scroll">Листается само. Можно листать и&nbsp;самому&nbsp;— колёсиком или пальцем. Закрыть&nbsp;— Esc или крестик.</span><span class="h-live">Это живой квиз: отвечайте на&nbsp;вопросы прямо здесь. Закрыть&nbsp;— Esc или крестик.</span></p>
+  </div>
+</dialog>
+
 <div class="cookie" role="region" aria-label="Уведомление о файлах cookie" hidden>
-  <p>Сайт использует файлы cookie и&nbsp;похожие технологии, чтобы работать правильно. Подробнее — в&nbsp;<a href="politika.html#cookie">политике обработки персональных данных</a>.</p>
-  <button class="pill cookie-ok" type="button">Хорошо</button>
+  <p>Сайт использует cookie. <a href="politika.html#cookie">Подробнее</a></p>
+  <button class="cookie-ok" type="button">Хорошо</button>
 </div>
 
-<script src="js/main.js?v=12"></script>
+<script src="js/v2.js?v=11"></script>
 </body>
 </html>

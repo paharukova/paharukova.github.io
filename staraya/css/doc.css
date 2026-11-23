@@ -1,0 +1,25 @@
+/* Страницы документов: политика и согласие — в стиле основного сайта */
+:root {
+  --bg: #1b2232; --card: #222b3f; --ink: #f3efe8; --ink-2: #c4c3c6;
+  --gold: #d9bb85; --line: rgba(243, 239, 232, .18);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink-2); font: 300 17px/1.7 "Ubuntu", system-ui, -apple-system, "Segoe UI", sans-serif; }
+::selection { background: var(--gold); color: var(--bg); }
+.doc { width: min(820px, calc(100% - 32px)); margin: 0 auto; padding: 48px 0 88px; }
+.back { display: inline-block; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 2px; font-size: .95rem; }
+.back:hover { color: var(--gold); }
+h1 { margin: 32px 0 8px; color: var(--ink); font: 500 clamp(1.7rem, 4vw, 2.5rem)/1.15 "Montserrat", sans-serif; letter-spacing: -.015em; text-wrap: balance; }
+h2 { margin: 44px 0 12px; color: var(--ink); font: 500 1.2rem/1.35 "Montserrat", sans-serif; scroll-margin-top: 24px; }
+.date { margin: 0 0 32px; color: var(--ink-2); font-size: .95rem; }
+p, li { margin: 0 0 10px; }
+ul, ol { padding-left: 22px; margin: 0 0 12px; }
+li::marker { color: var(--gold); }
+b { color: var(--ink); font-weight: 500; }
+a { color: var(--ink); text-decoration-color: var(--gold); text-underline-offset: 3px; }
+a:hover { color: var(--gold); }
+mark { background: rgba(217, 187, 133, .22); color: var(--ink); padding: 0 4px; border-radius: 4px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px 24px; margin: 18px 0; }
+.card p:last-child { margin: 0; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }

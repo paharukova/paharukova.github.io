@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Подбор занятий — онлайн-школа «Шаг вперёд»</title>
+  <meta name="description" content="Ответьте на 6 вопросов — и увидите план занятий, преподавателя и цену. Первый урок бесплатно.">
+  <meta name="theme-color" content="#FFF6EA">
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="stylesheet" href="css/style.css?v=1">
+</head>
+<body>
+  <!-- Рисунки-«наклейки» по краям: только на широком экране -->
+  <div class="doodles" aria-hidden="true">
+    <span class="dd dd-pi">π</span>
+    <span class="dd dd-five">5</span>
+    <span class="dd dd-ab">Ab</span>
+    <svg class="dd dd-pencil" viewBox="0 0 120 120"><g transform="rotate(-35 60 60)"><rect x="20" y="50" width="70" height="20" rx="3" fill="#FFD45C"/><rect x="20" y="50" width="12" height="20" fill="#FF8FA3"/><path d="M90 50 L108 60 L90 70 Z" fill="#F3D9B5"/><path d="M102 57 L108 60 L102 63 Z" fill="#1F2547"/></g></svg>
+    <svg class="dd dd-wave" viewBox="0 0 160 40"><path d="M4 22 C 24 2, 40 38, 60 20 S 96 2, 116 20 S 146 36, 156 16" fill="none" stroke="#5B6CFF" stroke-width="5" stroke-linecap="round"/></svg>
+    <span class="dd dd-star">★</span>
+  </div>
+
+  <header class="top">
+    <a class="logo" href="#" aria-label="Шаг вперёд — онлайн-школа">
+      <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="19" width="8" height="10" rx="2" fill="#FFD45C"/><rect x="12" y="12" width="8" height="17" rx="2" fill="#FF6A3D"/><rect x="21" y="4" width="8" height="25" rx="2" fill="#5B6CFF"/></svg>
+      <span><b>Шаг вперёд</b><small>онлайн-школа · 1–11 класс</small></span>
+    </a>
+    <span class="demo-tag" title="Пример работы: школа вымышлена, заявки никуда не отправляются">демо</span>
+  </header>
+
+  <main class="app" id="app" aria-live="polite">
+    <!-- Экраны рисует js/quiz.js -->
+    <noscript><p class="noscript">Чтобы пройти подбор, включите JavaScript в браузере.</p></noscript>
+  </main>
+
+  <footer class="foot">
+    <span>© Шаг вперёд, онлайн-школа</span>
+    <span class="foot-sep">·</span>
+    <span>Демо-квиз: школа вымышлена</span>
+  </footer>
+
+  <!-- Подключение к Telegram: работает, только когда квиз открыт внутри Telegram как мини-приложение -->
+  <script async id="tgjs" src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="js/quiz.js?v=2"></script>
+</body>
+</html>

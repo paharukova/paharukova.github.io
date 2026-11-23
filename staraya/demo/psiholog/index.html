@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Дарья Лебедева — психолог для женщин, онлайн и в Екатеринбурге</title>
+<meta name="description" content="Психолог Дарья Лебедева. Тревога, выгорание, отношения, самооценка. Онлайн и очно в Екатеринбурге. Первая встреча 20 минут — бесплатно.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="css/style.css?v=46">
+<link rel="stylesheet" href="css/sections.css?v=46">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+
+<!-- ===== Шапка: логотип по центру, ниже — меню и контакты (как у «Культуры Маникюра») ===== -->
+<header class="head">
+  <a class="logo" href="#top" aria-label="Дарья Лебедева, психолог — на главную">
+    <span class="logo__name">Дарья Лебедева</span>
+    <span class="logo__sub">психолог · онлайн и в Екатеринбурге</span>
+  </a>
+</header>
+
+<!-- строка меню закрепляется сверху при прокрутке; маленькое имя слева появляется, когда большое уехало -->
+<div class="head__row" id="bar">
+  <div class="head__inner">
+    <a class="mini-logo" href="#top" tabindex="-1" aria-hidden="true">Дарья Лебедева</a>
+    <nav class="nav" aria-label="Разделы">
+      <a href="#help">С чем помогаю</a>
+      <a href="#about">Обо мне</a>
+      <a href="#price">Стоимость</a>
+      <a href="#faq">Вопросы</a>
+      <a href="#book">Запись</a>
+    </nav>
+    <div class="head__contacts">
+      <a class="ico" href="#" data-demo aria-label="Telegram"><svg viewBox="0 0 24 24"><path d="M21.5 4.3 2.9 11.5c-1 .4-1 1.6.1 1.9l4.6 1.4 1.8 5.6c.2.7 1.1.9 1.6.4l2.6-2.4 4.8 3.5c.6.4 1.4.1 1.6-.6l3-15.6c.2-.9-.7-1.7-1.5-1.4ZM9.8 14.6l-.4 3.6-1.3-4.2 9.7-6.2-8 6.8Z"/></svg></a>
+      <a class="ico" href="#" data-demo aria-label="MAX"><svg viewBox="0 0 24 24"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.6 21l4.3-1.1A9.5 9.5 0 1 0 12 2.5Zm-3.4 12.9V8.6h1.5l1.9 3 1.9-3h1.5v6.8h-1.6v-4.2l-1.8 2.8-1.8-2.8v4.2H8.6Z"/></svg></a>
+      <span class="head__line" aria-hidden="true"></span>
+      <a class="head__phone" href="tel:+73430000000">+7 343 000-00-00</a>
+      <a class="btn btn--small bar__btn" href="#book">Записаться</a>
+    </div>
+    <button class="burger" aria-label="Меню" aria-expanded="false"><i></i><i></i><i></i></button>
+  </div>
+</div>
+
+<main id="top">
+
+<!-- ===== 1. Первый экран ===== -->
+<section class="hero">
+  <div class="hero__photo">
+    <img src="img3/hero.webp" alt="Психолог Дарья Лебедева в очках и светлом костюме, смотрит в камеру и улыбается" fetchpriority="high">
+  </div>
+  <h1 class="hero__title"><span>Искусство</span> <span>жить</span> <span>легко</span></h1>
+  <div class="hero__side">
+    <p class="hero__text">Помогаю женщинам выбраться из тревоги и усталости и снова почувствовать вкус к жизни — без вечных «надо» и «должна».</p>
+    <a class="btn" href="#book">Записаться на встречу</a>
+    <p class="hero__note">Первые 20 минут — бесплатно</p>
+  </div>
+</section>
+
+<!-- круглая кнопка записи справа, как у референса -->
+<a class="bubble" href="#book" aria-label="Онлайн-запись">Онлайн<br>запись</a>
+
+<!-- ===== 2. С чем помогаю — светлая карточка с вкладками ===== -->
+<section class="help" id="help">
+  <div class="card">
+    <div class="card__head">
+      <h2 class="card__title">Место, где можно<br>выдохнуть</h2>
+      <p class="card__lead">К психологу приходят не потому, что «сломались». А потому, что устали справляться в одиночку. Выберите, что откликается:</p>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="С чем помогаю">
+      <button role="tab" id="tab-1" aria-controls="p-1" aria-selected="true">Тревога</button>
+      <button role="tab" id="tab-2" aria-controls="p-2" aria-selected="false" tabindex="-1">Выгорание</button>
+      <button role="tab" id="tab-3" aria-controls="p-3" aria-selected="false" tabindex="-1">Отношения</button>
+      <button role="tab" id="tab-4" aria-controls="p-4" aria-selected="false" tabindex="-1">Самооценка</button>
+    </div>
+
+    <div class="panels">
+      <article class="panel is-active" role="tabpanel" id="p-1" aria-labelledby="tab-1">
+        <div class="panel__text">
+          <p class="panel__num">01 / 04</p>
+          <h3>Тревога</h3>
+          <p class="panel__quote">«Всё время жду, что случится что-то плохое — и не могу расслабиться»</p>
+          <p>Тревога выматывает сильнее работы. Разберёмся, откуда она берётся, и научимся её успокаивать — без «просто не думай об этом».</p>
+          <ul class="panel__list">
+            <li>Станет тише в голове, уйдёт прокручивание мыслей по ночам</li>
+            <li>Появятся способы быстро успокоиться в моменте</li>
+            <li>Вернётся ощущение, что жизнь под контролем</li>
+          </ul>
+          <p class="panel__price">от 4 000 ₽ <span>· 50 минут</span></p>
+          <div class="panel__btns"><a class="btn btn--small" href="#book" data-topic="Тревога">Записаться</a><button class="btn btn--ghost btn--small" data-demo>Подробнее</button></div>
+        </div>
+        <figure class="panel__pic"><img src="img3/t-trevoga.webp" alt="Дарья задумчиво слушает, подперев подбородок рукой"></figure>
+      </article>
+
+      <article class="panel" role="tabpanel" id="p-2" aria-labelledby="tab-2" hidden>
+        <div class="panel__text">
+          <p class="panel__num">02 / 04</p>
+          <h3>Выгорание</h3>
+          <p class="panel__quote">«Сил нет даже на то, что раньше радовало»</p>
+          <p>Когда вы всё время отдаёте — на работе, дома, близким — внутри становится пусто. Найдём, куда утекает энергия, и вернём то, что наполняет.</p>
+          <ul class="panel__list">
+            <li>Научитесь отдыхать без чувства вины</li>
+            <li>Появятся силы и желания — не только «надо»</li>
+            <li>Получится говорить «нет» и не чувствовать себя плохой</li>
+          </ul>
+          <p class="panel__price">от 4 000 ₽ <span>· 50 минут</span></p>
+          <div class="panel__btns"><a class="btn btn--small" href="#book" data-topic="Выгорание">Записаться</a><button class="btn btn--ghost btn--small" data-demo>Подробнее</button></div>
+        </div>
+        <figure class="panel__pic"><img src="img3/t-vygoranie.webp" alt="Дарья сидит в кресле, обняв колено"></figure>
+      </article>
+
+      <article class="panel" role="tabpanel" id="p-3" aria-labelledby="tab-3" hidden>
+        <div class="panel__text">
+          <p class="panel__num">03 / 04</p>
+          <h3>Отношения</h3>
+          <p class="panel__quote">«Мы будто говорим на разных языках»</p>
+          <p>С партнёром, мамой, взрослыми детьми. Поймём, почему одни и те же ссоры повторяются, и научимся говорить о важном так, чтобы вас слышали.</p>
+          <ul class="panel__list">
+            <li>Меньше обид и ссор на ровном месте</li>
+            <li>Получится говорить о своих желаниях прямо</li>
+            <li>Можно прийти одной или вдвоём</li>
+          </ul>
+          <p class="panel__price">от 4 000 ₽ <span>· 50 минут</span></p>
+          <div class="panel__btns"><a class="btn btn--small" href="#book" data-topic="Отношения">Записаться</a><button class="btn btn--ghost btn--small" data-demo>Подробнее</button></div>
+        </div>
+        <figure class="panel__pic"><img src="img3/t-otnosheniya.webp" alt="Дарья стоит у шторы, рука на поясе"></figure>
+      </article>
+
+      <article class="panel" role="tabpanel" id="p-4" aria-labelledby="tab-4" hidden>
+        <div class="panel__text">
+          <p class="panel__num">04 / 04</p>
+          <h3>Самооценка</h3>
+          <p class="panel__quote">«Всё время кажется, что я недостаточно хороша»</p>
+          <p>Внутренний критик звучит громче всех похвал. Поймём, чей это голос, и научимся относиться к себе теплее — и при этом расти.</p>
+          <ul class="panel__list">
+            <li>Перестанете сравнивать себя с другими</li>
+            <li>Появится опора внутри, а не в чужих оценках</li>
+            <li>Решения будут даваться легче</li>
+          </ul>
+          <p class="panel__price">от 4 000 ₽ <span>· 50 минут</span></p>
+          <div class="panel__btns"><a class="btn btn--small" href="#book" data-topic="Самооценка">Записаться</a><button class="btn btn--ghost btn--small" data-demo>Подробнее</button></div>
+        </div>
+        <figure class="panel__pic"><img src="img3/t-samoocenka.webp" alt="Портрет Дарьи крупным планом"></figure>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3. Зачем идти к психологу — суть ===== -->
+<section class="why" id="why">
+  <div class="wrap why__grid">
+    <div class="why__pic"><img src="img3/why.webp" alt="Дарья улыбается, сидя в кресле" loading="lazy"></div>
+    <div class="why__text">
+      <p class="eyebrow">Зачем идти к психологу</p>
+      <h2 class="big-title">Подруга выслушает.<br>Психолог поможет<br>разобраться.</h2>
+      <p class="why__intro">Прийти к психологу — не значит «со мной что-то не так». Это как прийти к тренеру: можно заниматься самой, но со специалистом — быстрее, бережнее и без травм.</p>
+      <ol class="why__list">
+        <li><span>01</span><div><h3>Взгляд со стороны, без оценок</h3><p>Близкие любят нас и поэтому советуют «как лучше для них». У меня нет своего интереса в вашей жизни — только ваш.</p></div></li>
+        <li><span>02</span><div><h3>Не советы, а понимание</h3><p>«Отдохни» и «не накручивай» вы знаете и так. Мы найдём, почему не получается, — и что сработает именно у вас.</p></div></li>
+        <li><span>03</span><div><h3>Место, где можно не быть сильной</h3><p>Не нужно держать лицо и беречь чужие чувства. Всё сказанное остаётся между нами.</p></div></li>
+        <li><span>04</span><div><h3>Изменения, которые остаются</h3><p>Моя цель — чтобы я стала вам не нужна. Вы уйдёте с навыками, которые работают и без меня.</p></div></li>
+      </ol>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="signs" id="signs">
+      <div class="signs__head">
+        <p class="eyebrow">Проверьте себя</p>
+        <h3 class="signs__title">Когда пора прийти<br>к психологу</h3>
+        <p class="signs__hint">Отметьте то, что совпадает с вами:</p>
+      </div>
+      <ul class="signs__list">
+        <li><button type="button" aria-pressed="false"><i aria-hidden="true"></i><span>Плохое настроение не уходит дольше двух недель</span></button></li>
+        <li><button type="button" aria-pressed="false"><i aria-hidden="true"></i><span>Тяжело спать, работать или общаться с близкими</span></button></li>
+        <li><button type="button" aria-pressed="false"><i aria-hidden="true"></i><span>Вы ходите по кругу и не видите выхода</span></button></li>
+        <li><button type="button" aria-pressed="false"><i aria-hidden="true"></i><span>Хочется перемен, но непонятно, каких</span></button></li>
+      </ul>
+      <div class="signs__foot">
+        <p class="signs__note" id="signsNote" aria-live="polite">Даже одно совпадение — уже повод. Не обязательно ждать, «пока станет совсем плохо».</p>
+        <a class="btn" href="#book">Записаться на знакомство</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5. Обо мне — тауповая полоса с круглым фото (как «Культура лучших мастеров») ===== -->
+<section class="about" id="about">
+  <div class="wrap about__grid">
+    <div class="about__text">
+      <h2 class="cap-title cap-title--light">Обо мне</h2>
+      <p class="about__lead">Я Дарья Лебедева, клинический психолог. 15 лет помогаю женщинам справляться с тревогой, выгоранием и сложностями в отношениях.</p>
+      <p>Работаю в когнитивно-поведенческом подходе — это научный метод с понятными шагами. Вместе находим мысли и привычки, которые держат вас в замкнутом круге, и пробуем новые. На первой встрече договоримся о цели и будем сверяться, приближаемся ли мы к ней.</p>
+      <p>Регулярно разбираю свою работу с более опытным коллегой (это называется супервизия) — так консультации остаются качественными и безопасными для вас.</p>
+      <dl class="facts">
+        <div><dt>15 лет</dt><dd>практики</dd></div>
+        <div><dt>2 000+</dt><dd>консультаций</dd></div>
+        <div><dt>УрФУ</dt><dd>клиническая психология</dd></div>
+      </dl>
+    </div>
+    <div class="about__pic"><img src="img3/about.webp" alt="Психолог Дарья Лебедева смотрит в камеру" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- ===== 4. Где проходят встречи (как «Культура комфортных пространств») ===== -->
+<section class="places" id="places">
+  <div class="wrap places__grid">
+    <div class="places__head">
+      <h2 class="cap-title">Там, где<br>вам спокойно</h2>
+      <p>Встречаемся в кабинете в центре Екатеринбурга или по видеосвязи из любой точки мира. Работает одинаково хорошо — выбирайте, как удобнее.</p>
+    </div>
+    <article class="place">
+      <p class="place__note">Чай, плед и никакой спешки. Пять минут от метро «Площадь 1905 года».</p>
+      <div class="place__pic"><img src="img3/kabinet.webp" alt="Дарья в кабинете, сидит в кожаном кресле" loading="lazy"></div>
+      <h3>Кабинет<br>на Малышева, 51</h3>
+    </article>
+    <article class="place place--low">
+      <p class="place__note">Нужны только наушники и место, где вас не услышат. Можно даже из машины.</p>
+      <div class="place__pic"><img src="img3/online.webp" alt="Дарья улыбается и смотрит в камеру" loading="lazy"></div>
+      <h3>Онлайн<br>из любой страны</h3>
+    </article>
+  </div>
+</section>
+
+<!-- ===== 6. Как всё устроено — «таблетки» с номерами (как HOW IT WORKS у The Modern Muse) ===== -->
+<section class="steps" id="steps">
+  <div class="wrap">
+    <h2 class="center-title">Как всё устроено</h2>
+    <ol class="steps__list">
+      <li><b>01.</b><div class="pill"><h3>Вы оставляете заявку</h3><p>Можно в двух словах — или просто «хочу записаться».</p></div></li>
+      <li><b>02.</b><div class="pill"><h3>Знакомимся, 20 минут</h3><p>Бесплатно, по видео. Решите, комфортно ли вам со мной.</p></div></li>
+      <li><b>03.</b><div class="pill"><h3>Встречаемся раз в неделю</h3><p>По 50 минут. Если не подходим друг другу — подскажу, к кому обратиться.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== 7. Стоимость — фото + две светлые карточки ===== -->
+<section class="price" id="price">
+  <div class="wrap price__grid">
+    <div class="price__pic"><img src="img3/price.webp" alt="Дарья опирается на спинку кресла и смотрит в камеру" loading="lazy"></div>
+    <div class="price__cards">
+      <h2 class="cap-title">Стоимость</h2>
+      <article class="offer">
+        <h3>Одна встреча</h3>
+        <p>Чтобы разобраться с конкретной ситуацией или просто попробовать. 50 минут.</p>
+        <ul class="offer__rows">
+          <li><span>Знакомство, 20 минут</span><b>бесплатно</b></li>
+          <li><span>Консультация онлайн</span><b>4 000 ₽</b></li>
+          <li><span>Консультация в кабинете</span><b>4 500 ₽</b></li>
+        </ul>
+        <a class="btn btn--small" href="#book" data-format="Онлайн">Записаться</a>
+      </article>
+      <article class="offer">
+        <h3>Пять встреч</h3>
+        <p>Для тех, кто готов к работе: за пять встреч обычно уже заметны изменения. Встречи раз в неделю.</p>
+        <ul class="offer__rows">
+          <li><span>5 консультаций онлайн</span><b>18 000 ₽</b></li>
+          <li><span>Экономия</span><b>2 000 ₽</b></li>
+        </ul>
+        <a class="btn btn--small" href="#book" data-format="Пять встреч">Выбрать пакет</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 8. Вопросы ===== -->
+<section class="faq" id="faq">
+  <div class="card card--faq">
+    <h2 class="card__title">Если сомневаетесь&nbsp;—<br>это нормально</h2>
+    <div class="faq__list">
+      <details><summary>Это точно останется между нами?</summary><p>Да. Я никому не рассказываю о клиентах — ни родственникам, ни работодателю. Исключение одно: угроза жизни, и о нём мы говорим заранее.</p></details>
+      <details><summary>Я не знаю, с чего начать и что говорить</summary><p>Это моя задача. Достаточно прийти и сказать «мне плохо» или «не понимаю, что со мной». Дальше я буду задавать вопросы.</p></details>
+      <details><summary>Сколько встреч понадобится?</summary><p>С конкретной ситуацией часто хватает 5–10 встреч, с давними трудностями работаем дольше. На знакомстве скажу примерно, а дальше будем сверяться.</p></details>
+      <details><summary>Онлайн — это так же полезно, как очно?</summary><p>Исследования говорят, что да. Многим даже легче: дома спокойнее, а время на дорогу не тратится.</p></details>
+      <details><summary>Чем психолог отличается от психиатра?</summary><p>Психиатр — врач: ставит диагнозы и назначает лекарства. Психолог работает разговором и упражнениями. Если увижу, что нужна помощь врача, скажу прямо и подскажу, к кому обратиться.</p></details>
+      <details><summary>Можно перенести или отменить встречу?</summary><p>Да, бесплатно — если предупредите за сутки.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 9. Запись ===== -->
+<section class="book" id="book">
+  <div class="wrap book__grid">
+    <div class="book__head">
+      <h2 class="cap-title"><span class="nowrap">Первый шаг&nbsp;—</span><br><span class="nowrap">самый трудный</span></h2>
+      <p>Пусть он будет коротким. Оставьте заявку — я напишу в течение дня и предложу время для бесплатного знакомства.</p>
+      <p class="book__alt">Или напишите сразу: <a href="#" data-demo>Telegram</a> · <a href="#" data-demo>MAX</a> · <a href="tel:+73430000000">+7 343 000-00-00</a></p>
+    </div>
+    <form class="form" id="form" novalidate>
+      <fieldset>
+        <legend>Что беспокоит</legend>
+        <div class="chips" id="topicChips">
+          <label><input type="checkbox" name="topic" value="Тревога"><span>Тревога</span></label>
+          <label><input type="checkbox" name="topic" value="Выгорание"><span>Выгорание</span></label>
+          <label><input type="checkbox" name="topic" value="Отношения"><span>Отношения</span></label>
+          <label><input type="checkbox" name="topic" value="Самооценка"><span>Самооценка</span></label>
+          <label><input type="checkbox" name="topic" value="Пока не знаю"><span>Пока не знаю</span></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Формат</legend>
+        <div class="chips" id="formatChips">
+          <label><input type="radio" name="format" value="Знакомство" checked><span>Знакомство · 0 ₽</span></label>
+          <label><input type="radio" name="format" value="Онлайн"><span>Онлайн</span></label>
+          <label><input type="radio" name="format" value="Кабинет"><span>В кабинете</span></label>
+          <label><input type="radio" name="format" value="Пять встреч"><span>Пять встреч</span></label>
+        </div>
+      </fieldset>
+      <div class="form__row">
+        <label class="field"><span>Как к вам обращаться</span><input name="name" autocomplete="given-name" required></label>
+        <label class="field"><span>Телефон или Telegram</span><input name="contact" required></label>
+      </div>
+      <label class="agree"><input type="checkbox" required><span>Согласна на обработку персональных данных</span></label>
+      <button class="btn btn--wide" type="submit">Отправить заявку</button>
+      <p class="form__msg" id="formMsg" role="status"></p>
+    </form>
+  </div>
+</section>
+
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <a class="logo logo--foot" href="#top"><span class="logo__name">Дарья Лебедева</span><span class="logo__sub">психолог</span></a>
+      <nav class="foot__nav" aria-label="Разделы в подвале">
+        <a href="#help">С чем помогаю</a><a href="#why">Зачем психолог</a><a href="#about">Обо мне</a><a href="#price">Стоимость</a><a href="#faq">Вопросы</a>
+      </nav>
+      <div class="foot__contacts">
+        <a href="tel:+73430000000">+7 343 000-00-00</a>
+        <a href="#" data-demo>Telegram</a>
+        <a href="#" data-demo>MAX</a>
+        <span>Екатеринбург, ул. Малышева, 51</span>
+      </div>
+    </div>
+    <p class="foot__sos">Если вам прямо сейчас очень тяжело и есть мысли навредить себе — не ждите записи, звоните <a href="tel:112">112</a>. Это бесплатно и круглосуточно.</p>
+    <div class="foot__bottom"><span>© 2026 Дарья Лебедева</span><a href="#" data-demo>Политика конфиденциальности</a><span>Демо-сайт. Психолог, адрес и цены вымышлены, любые совпадения с реальными людьми и организациями случайны.</span></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status"></div>
+<script src="js/main.js?v=46"></script>
+</body>
+</html>
