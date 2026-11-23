@@ -342,15 +342,18 @@
   var FLOWER = '<svg viewBox="0 0 20 26" aria-hidden="true"><path d="M10 25V11M10 11c-3-1-5-4-4-7 2 0 4 2 4 5 0-3 2-5 4-5 1 3-1 6-4 7M10 18c-2-1-4-1-5 1M10 16c2-1 4-1 5 1"/></svg>';
 
   var SPHERES = {
-    /* Салон — по референсу Fenyly */
-    beauty: { label: "салон красоты", def: "Студия «Лоск»", html: function (n) { var p = parts(n); return '' +
-      '<div class="fy-nav ms-el"><span>маникюр · брови · волосы</span><b>[запись]</b></div>' +
-      '<div class="fy-hero ms-el"><p class="fy-kind">' + esc(p.k || "студия красоты") + '</p><p class="fy-word fit">' + esc(p.w) + '</p><img src="img/try2/beauty-c.webp" alt=""></div>' +
-      '<div class="fy-row ms-el"><p><b>[окна сегодня]</b>12:00 · 15:30 · 18:00</p><p class="r"><b>[первый визит]</b>скидка 20%</p></div>' +
-      '<div class="fy-btn ms-el">Записаться онлайн</div>' +
-      '<div class="fy-h ms-el"><h4>Прайс</h4><span>[все услуги]</span></div>' +
-      '<div class="fy-grid ms-el"><div class="fy-card"><img src="img/try2/beauty-b.webp" alt=""><small>топ</small><p>Маникюр + покрытие</p><b>1 500 ₽</b></div>' +
-        '<div class="fy-card fy-red"><span class="fy-big">Брови</span><small>new</small><p>Под ключ · 40 минут</p><b>900 ₽</b></div></div>'; } },
+    /* Салон — по референсу «Стажировка для веб-дизайнеров»: серый фон, бордовые плашки, книжечка записи, лента */
+    beauty: { label: "салон красоты", def: "Студия «Лоск»", html: function (n) { var p = parts(n), t = "Запись открыта ✦ Окна на сегодня ✦ Без сколов 4 недели ✦ "; t = esc(t + t + t + t); return '' +
+      '<div class="lk-top ms-el"><span>маникюр · брови · ресницы</span><span class="lk-menu">меню</span></div>' +
+      '<p class="lk-h ms-el">' + (p.k ? esc(p.k) + ' ' : '') + '<mark>' + esc(p.w) + '</mark><br>маникюр, который держится 4&nbsp;недели</p>' +
+      '<div class="lk-sub ms-el"><p>Всё, что вы хотели <mark>от&nbsp;маникюра</mark>,<br>и&nbsp;кофе, пока сохнет лак</p><b>сегодня<br>12:00–18:00</b></div>' +
+      '<div class="lk-hero ms-el"><img class="lk-photo" src="img/try2/sal-main.webp" alt="">' +
+        '<span class="lk-book">Записаться<small>онлайн<br>за минуту</small><i></i></span>' +
+        '<span class="lk-pol"><img src="img/try2/sal-4.webp" alt="">Гель-лак<br>1 500 ₽</span>' +
+        '<div class="lk-tape"><span>' + t + '</span></div></div>' +
+      '<p class="lk-h2 ms-el">Что делаем</p>' +
+      '<div class="lk-row ms-el"><div class="lk-card"><img src="img/try2/sal-2.webp" alt="">Маникюр <mark>1 500 ₽</mark></div><div class="lk-card"><img src="img/try2/sal-3.webp" alt="">Брови <mark>900 ₽</mark></div></div>' +
+      '<div class="lk-cta ms-el">Занять окно в <mark>12:00</mark></div>'; } },
 
     /* Репетитор — по референсу «Елена Дюссолье»: бумага, серо-голубой, полароиды на скотче */
     tutor: { label: "репетитор", def: "Анна Смирнова", html: function (n) { var f = esc(first(n)); return '' +
@@ -376,8 +379,6 @@
     law: { label: "юрист", def: "Бюро «Право»", html: function (n, ini) { return '' +
       '<div class="ag-nav ms-el"><span>о бюро<br>услуги</span><b class="ag-logo">' + ini + '</b><span class="r">не обещаем —<br>объясняем</span></div>' +
       '<div class="ag-hero ms-el"><img src="img/try2/law-a.webp" alt="">' +
-        '<svg class="ag-geo" viewBox="0 0 318 252" aria-hidden="true"><rect x="99" y="34" width="120" height="120" rx="22" transform="rotate(45 159 94)"/><rect x="79" y="14" width="160" height="160" rx="30" transform="rotate(45 159 94)"/>' +
-        '<circle cx="159" cy="94" r="98"/><circle cx="26" cy="94" r="30"/><circle cx="292" cy="94" r="30"/><path d="M0 94H318"/></svg>' +
         '<p class="ag-name fit">' + esc(n) + '</p><p class="ag-l">юридическая помощь<br>онлайн и в офисе</p><p class="ag-r">15 минут<br>консультация 0 ₽</p></div>' +
       '<p class="ag-big ms-el">Решаем споры&nbsp;— <span>чаще без&nbsp;суда.</span></p>' +
       '<ul class="ag-list ms-el"><li><span>01</span>Семейные споры<i>→</i></li><li><span>02</span>Долги и банкротство<i>→</i></li><li><span>03</span>Недвижимость<i>→</i></li></ul>' +
@@ -621,7 +622,7 @@
   render();
   // шрифты мини-сайтов догрузились — подогнать имя ещё раз
   if (document.fonts) {
-    Promise.all(['20px "Prata"', '700 20px "Oswald"', '600 20px "Inter Tight"', '900 20px "Alumni Sans"', '800 20px "Unbounded"', '500 20px "Cormorant"', '20px "Marck Script"']
+    Promise.all(['800 20px "Manrope"', '700 20px "Oswald"', '600 20px "Inter Tight"', '900 20px "Alumni Sans"', '800 20px "Unbounded"', '500 20px "Cormorant"', '20px "Marck Script"']
       .map(function (f) { return document.fonts.load(f).catch(function () {}); })).then(fitAll);
     document.fonts.addEventListener && document.fonts.addEventListener("loadingdone", fitAll);
   }

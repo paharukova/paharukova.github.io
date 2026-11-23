@@ -1061,35 +1061,42 @@ html.pv-lock { overflow: hidden; }
    Онлайн-школа осталась прежней (выше).
    ================================================================ */
 
-/* — Салон (референс Fenyly): огромное название красным, чёрно-белая рука «встаёт» в буквы,
-     подписи в квадратных скобках, острые красные кнопки — */
-.ms-beauty { --bg-s: #fff; --ink-s: #141414; --red: #b3121e; font-family: "Inter Tight", var(--f-t); }
-.ms-beauty .fy-nav { display: flex; justify-content: space-between; align-items: center; font-size: 8.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--red); }
-.ms-beauty .fy-nav b { font-weight: 600; }
-.ms-beauty .fy-hero { position: relative; height: 282px; margin: 4px -14px 0; }
-/* слово над рукой: читается целиком, кончики пальцев лишь касаются букв снизу */
-.ms-beauty .fy-word { position: absolute; z-index: 2; left: 8px; right: 8px; top: 16px; margin: 0; font: 400 116px/1.1 "Prata", serif; color: var(--red); text-align: center; letter-spacing: -.02em; }
-/* рука на белом фоне: белое «растворяется» (multiply), и пальцы встают прямо в красные буквы */
-.ms-beauty .fy-hero img { position: absolute; left: 50%; top: 104px; width: 214px; height: calc(100% - 104px); object-fit: cover; object-position: 50% 14%; transform: translateX(-46%);
-  mix-blend-mode: multiply; filter: contrast(1.06) brightness(1.04);
-  -webkit-mask-image: linear-gradient(#000 72%, transparent), linear-gradient(90deg, transparent, #000 22%); -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(#000 72%, transparent), linear-gradient(90deg, transparent, #000 22%); mask-composite: intersect; }
-.ms-beauty .fy-kind { position: absolute; left: 14px; top: 8px; margin: 0; font-size: 8.5px; letter-spacing: .14em; text-transform: uppercase; color: #6d6d6d; }
-.ms-beauty .fy-row { display: flex; justify-content: space-between; gap: 10px; font-size: 10.5px; line-height: 1.35; }
-.ms-beauty .fy-row b { display: block; margin-bottom: 2px; color: var(--red); font-size: 8.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; text-decoration: underline; text-underline-offset: 2px; }
-.ms-beauty .fy-row .r { text-align: right; }
-.ms-beauty .fy-btn { margin-top: 12px; padding: 12px; background: var(--red); color: #fff; text-align: center; font-size: 10.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
-.ms-beauty .fy-h { display: flex; justify-content: space-between; align-items: baseline; margin-top: auto; padding-top: 14px; }
-.ms-beauty .fy-h h4 { margin: 0; font: 400 25px/1 "Prata", serif; color: var(--red); text-transform: uppercase; letter-spacing: .02em; }
-.ms-beauty .fy-h span { color: var(--red); font-size: 8.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; text-decoration: underline; text-underline-offset: 2px; }
-.ms-beauty .fy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
-.ms-beauty .fy-card { display: grid; align-content: start; gap: 2px; padding: 6px 6px 8px; background: #f1eeeb; font-size: 9.5px; text-transform: uppercase; letter-spacing: .02em; }
-.ms-beauty .fy-card img { width: 100%; height: 128px; object-fit: cover; object-position: 50% 40%; margin-bottom: 5px; }
-.ms-beauty .fy-card small { color: var(--red); font-size: 7.5px; letter-spacing: .14em; }
-.ms-beauty .fy-card b { font-size: 11px; font-weight: 600; }
-.ms-beauty .fy-red { background: var(--red); color: #fff; align-content: end; }
-.ms-beauty .fy-red small { color: #ffc9cc; }
-.ms-beauty .fy-red .fy-big { margin-bottom: auto; padding: 4px 0 0; font: 400 30px/1 "Prata", serif; text-transform: none; }
+/* — Салон (23.11, второй референс «Стажировка для веб-дизайнеров»): светло-серый фон, жирные чёрные заглавные,
+     бордовые плашки на словах, наклонённая «книжечка» записи со штрихкодом, сигнальная лента с бегущим текстом,
+     полароиды с подписями, наклейка «меню» — */
+.ms-beauty { --bg-s: #dfe3e3; --ink-s: #141414; --bord: #7d1631; font-family: "Manrope", var(--f-t); }
+.ms-beauty .lk-top { display: flex; justify-content: space-between; align-items: center; font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.ms-beauty .lk-menu { padding: 4px 9px; background: var(--bord); color: #fff; rotate: 8deg; box-shadow: 0 4px 8px -4px rgba(0, 0, 0, .5); }
+.ms-beauty .lk-h { margin-top: 10px; font: 800 23px/1.04 "Manrope", sans-serif; text-transform: uppercase; letter-spacing: -.02em; }
+.ms-beauty .lk-h mark { padding: 0 5px; background: var(--bord); color: #fff; }
+.ms-beauty .lk-sub { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 9px; }
+.ms-beauty .lk-sub p { font-size: 9.5px; line-height: 1.3; font-weight: 500; }
+.ms-beauty .lk-sub mark { padding: 0 3px; background: var(--bord); color: #fff; }
+.ms-beauty .lk-sub b { flex: none; padding: 6px 8px; box-shadow: inset 0 0 0 1.5px #141414; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: -.01em; text-align: center; line-height: 1.1; }
+.ms-beauty .lk-hero { position: relative; height: 236px; margin: 6px -14px 0; }
+.ms-beauty .lk-photo { position: absolute; left: 50%; top: 0; width: 190px; height: 100%; object-fit: cover; object-position: 50% 6%; transform: translateX(-42%);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent), linear-gradient(transparent, #000 14%, #000 70%, transparent); -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent), linear-gradient(transparent, #000 14%, #000 70%, transparent); mask-composite: intersect; }
+.ms-beauty .lk-book { position: absolute; z-index: 2; left: 14px; top: 70px; display: grid; grid-template-columns: minmax(0, 1fr); align-content: space-between; width: 94px; height: 108px; padding: 10px 9px 9px; overflow: hidden; background: var(--bord); color: #fff; rotate: -9deg;
+  box-shadow: 6px 10px 16px -8px rgba(0, 0, 0, .55); font: 800 10.5px/1.05 "Manrope", sans-serif; text-transform: uppercase; letter-spacing: -.01em; }
+.ms-beauty .lk-book small { display: block; margin-top: 4px; font-size: 6.5px; line-height: 1.25; font-weight: 500; letter-spacing: .06em; opacity: .8; }
+.ms-beauty .lk-book i { display: block; height: 16px; background: repeating-linear-gradient(90deg, #fff 0 1.5px, transparent 1.5px 3px, #fff 3px 4px, transparent 4px 6.5px, #fff 6.5px 9px, transparent 9px 10px); opacity: .9; }
+.ms-beauty .lk-pol { position: absolute; z-index: 2; right: 14px; top: 26px; width: 76px; padding: 4px 4px 6px; background: #fff; rotate: 7deg; box-shadow: 0 10px 16px -8px rgba(0, 0, 0, .45); font-size: 7px; font-weight: 800; line-height: 1.15; text-transform: uppercase; }
+.ms-beauty .lk-pol img { display: block; width: 100%; height: 76px; object-fit: cover; object-position: 60% 30%; margin-bottom: 4px; }
+.ms-beauty .lk-tape { position: absolute; z-index: 3; left: -20px; right: -20px; bottom: 14px; overflow: hidden; padding: 5px 0; background: var(--bord); rotate: -4deg;
+  box-shadow: inset 0 2px 0 #c9a4ae, inset 0 -2px 0 #c9a4ae, 0 6px 12px -6px rgba(0, 0, 0, .5); }
+.ms-beauty .lk-tape span { display: inline-block; white-space: nowrap; color: #fff; font-size: 8.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; animation: lkTape 12s linear infinite; }
+@keyframes lkTape { to { transform: translateX(-50%); } }
+.ms-beauty .lk-h2 { margin-top: 8px; text-align: center; font: 800 15px/1.1 "Manrope", sans-serif; text-transform: uppercase; letter-spacing: -.01em; }
+.ms-beauty .lk-row { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 10px; padding: 0 8px; }
+.ms-beauty .lk-card { padding: 4px 4px 7px; background: #fff; box-shadow: 0 10px 16px -10px rgba(0, 0, 0, .45); font-size: 8.5px; font-weight: 800; line-height: 1.2; text-transform: uppercase; }
+.ms-beauty .lk-card:first-child { rotate: -4deg; } .ms-beauty .lk-card:last-child { rotate: 3deg; margin-top: 8px; }
+.ms-beauty .lk-card img { display: block; width: 100%; height: 86px; object-fit: cover; margin-bottom: 5px; }
+.ms-beauty .lk-card:first-child img { object-position: 50% 12%; } .ms-beauty .lk-card:last-child img { object-position: 70% 30%; }
+.ms-beauty .lk-card mark { padding: 0 3px; background: var(--bord); color: #fff; }
+.ms-beauty .lk-cta { margin-top: auto; padding: 13px; background: #141414; color: #fff; text-align: center; font-size: 10.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.ms-beauty .lk-cta mark { padding: 1px 5px; background: var(--bord); color: #fff; }
+@media (prefers-reduced-motion: reduce) { .ms-beauty .lk-tape span { animation: none; } }
 
 /* — Автосервис (референсы Gamedev + Fitness): чёрный и красный, огромные узкие буквы, наклейка под наклоном,
      список услуг с линиями, круглая красная кнопка — */
