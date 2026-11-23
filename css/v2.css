@@ -245,109 +245,6 @@ h2 { font-size: clamp(2.1rem, 3.6vw, 3.25rem); }
 @keyframes chUp { from { transform: translateY(70%); opacity: 0; } }
 .fit { display: block; white-space: nowrap; overflow: hidden; }
 
-/* — 1. Салон: вишня и пудра, по кругу бежит название, шкала свободных окон — */
-.ms-beauty { --bg-s: #f7e6e8; --ink-s: #4a0d1c; --cher: #8e1630; }
-.ms-beauty .b2-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-.ms-beauty .b2-name { min-width: 0; font: 400 15px/1.1 "Dela Gothic One", sans-serif; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.ms-beauty .b2-pill { flex: none; padding: 6px 12px; border-radius: 999px; box-shadow: inset 0 0 0 1.5px var(--cher); color: var(--cher); font-size: 10.5px; font-weight: 500; }
-.ms-beauty .b2-photo { position: relative; height: 200px; margin-top: 12px; border-radius: 24px; overflow: hidden; }
-.ms-beauty .b2-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
-.ms-beauty .b2-ring { position: absolute; right: 8px; bottom: 8px; width: 96px; height: 96px; padding: 4px; border-radius: 50%; background: var(--cher); animation: spin 16s linear infinite; }
-.ms-beauty .b2-ring text { fill: #f7e6e8; font: 400 9.5px "Dela Gothic One", sans-serif; letter-spacing: .06em; }
-@keyframes spin { to { transform: rotate(360deg); } }
-.ms-beauty .b2-title { margin-top: 14px; font: 400 23px/1.12 "Dela Gothic One", sans-serif; letter-spacing: -.01em; }
-.ms-beauty .b2-title em { font-style: normal; color: var(--cher); background: linear-gradient(transparent 62%, #f4b8c2 62%); }
-.ms-beauty .b2-day { margin-top: 14px; padding: 12px; border-radius: 18px; background: #fff; }
-.ms-beauty .b2-day > p { display: flex; justify-content: space-between; font-size: 11px; }
-.ms-beauty .b2-day > p b { font-weight: 500; }
-.ms-beauty .b2-day > p span { opacity: .6; }
-.ms-beauty .b2-line { position: relative; height: 16px; margin-top: 10px; border-radius: 8px; overflow: hidden; background: #f7e6e8; }
-.ms-beauty .b2-line i { position: absolute; top: 0; bottom: 0; }
-.ms-beauty .b2-line .busy { background: repeating-linear-gradient(-45deg, #e4c3c9 0 3px, #f2dde0 3px 6px); }
-.ms-beauty .b2-line .free { background: var(--cher); border-radius: 6px; box-shadow: 0 0 0 2px #fff inset; }
-.ms-beauty .b2-hours { display: flex; justify-content: space-between; margin-top: 4px; font-size: 9.5px; opacity: .55; }
-.ms-beauty .b2-list { margin-top: 10px; }
-.ms-beauty .b2-list p { display: flex; justify-content: space-between; align-items: baseline; padding: 7px 2px; border-bottom: 1px solid rgba(74, 13, 28, .14); font-size: 12px; }
-.ms-beauty .b2-list b { font: 400 14px/1 "Dela Gothic One", sans-serif; color: var(--cher); }
-.ms-beauty .b2-list b::after { content: " ₽"; font: 400 11px var(--f-t); }
-.ms-beauty .b2-cta { margin-top: auto; padding: 14px; border-radius: 16px; background: var(--cher); color: #fff; text-align: center; font-weight: 500; }
-
-/* — 2. Психолог: онлайн-сессия как видеозвонок, сиреневое сияние, мини-чек-ап — */
-.ms-psy { --bg-s: #f3efff; --ink-s: #2a2350; --vio: #5a4bc2;
-  background: radial-gradient(180px 160px at 15% 8%, #dcd1ff, transparent 70%), radial-gradient(200px 180px at 95% 40%, #ffd9c7, transparent 70%), radial-gradient(220px 200px at 20% 95%, #cdeee4, transparent 70%), #f3efff; }
-.ms-psy .p2-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-.ms-psy .p2-top p { min-width: 0; line-height: 1.25; }
-.ms-psy .p2-name { display: block; font: 700 15px/1.2 "Comfortaa", sans-serif; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.ms-psy .p2-top span { font-size: 10px; opacity: .7; }
-.ms-psy .p2-on { flex: none; display: inline-flex; align-items: center; gap: 5px; padding: 5px 10px; border-radius: 999px; background: #fff; font-size: 10px !important; opacity: 1 !important; }
-.ms-psy .p2-on::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #2fb67c; }
-.ms-psy .p2-call { position: relative; height: 196px; margin-top: 12px; border-radius: 24px; overflow: hidden; box-shadow: 0 18px 30px -18px rgba(42, 35, 80, .5); }
-.ms-psy .p2-call img { width: 100%; height: 100%; object-fit: cover; object-position: 54% 30%; }
-.ms-psy .p2-live { position: absolute; left: 10px; top: 10px; display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: 999px; background: rgba(20, 16, 40, .55); color: #fff; font-size: 10px; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
-.ms-psy .p2-live i { width: 7px; height: 7px; border-radius: 50%; background: #ff5a5a; animation: livePulse 1.4s infinite; }
-.ms-psy .p2-live b { font-weight: 500; font-variant-numeric: tabular-nums; }
-@keyframes livePulse { 50% { opacity: .3; } }
-.ms-psy .p2-self { position: absolute; right: 10px; top: 10px; width: 54px; height: 72px; border-radius: 12px; background: linear-gradient(160deg, #cfc3ff, #ffd0bd); box-shadow: 0 0 0 2px rgba(255, 255, 255, .8); }
-.ms-psy .p2-ctrl { position: absolute; left: 0; right: 0; bottom: 10px; display: flex; justify-content: center; gap: 10px; }
-.ms-psy .p2-ctrl i { width: 32px; height: 32px; border-radius: 50%; background: rgba(255, 255, 255, .85) center / 15px no-repeat; }
-.ms-psy .p2-ctrl .mic { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232a2350' stroke-width='2' stroke-linecap='round'%3E%3Crect x='9' y='3' width='6' height='11' rx='3'/%3E%3Cpath d='M5 11a7 7 0 0 0 14 0M12 18v3'/%3E%3C/svg%3E"); }
-.ms-psy .p2-ctrl .cam { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232a2350' stroke-width='2' stroke-linejoin='round'%3E%3Crect x='3' y='6' width='12' height='12' rx='2'/%3E%3Cpath d='M15 10l6-3v10l-6-3z'/%3E%3C/svg%3E"); }
-.ms-psy .p2-ctrl .end { background-color: #ff5a5a; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M4 14c5-5 11-5 16 0'/%3E%3C/svg%3E"); }
-.ms-psy .p2-title { margin-top: 14px; font: 700 23px/1.15 "Comfortaa", sans-serif; letter-spacing: -.01em; }
-.ms-psy .p2-check { margin-top: 12px; padding: 12px 14px; border-radius: 18px; background: rgba(255, 255, 255, .75); display: grid; gap: 7px; }
-.ms-psy .p2-ch { font-size: 10px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--vio); }
-.ms-psy .p2-bar { display: grid; grid-template-columns: 58px 1fr; align-items: center; gap: 8px; font-size: 11px; }
-.ms-psy .p2-bar i { position: relative; height: 8px; border-radius: 6px; background: #e8e3fb; overflow: hidden; }
-.ms-psy .p2-bar i::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: var(--w); border-radius: 6px; background: linear-gradient(90deg, #a79bff, var(--vio)); }
-.ms-psy .ms-el.on .p2-bar i::after { animation: grow 1.2s var(--ease-out) .3s both; }
-@keyframes grow { from { width: 0; } }
-.ms-psy .p2-note { font-size: 11px; opacity: .8; }
-.ms-psy .p2-cta { margin-top: auto; padding: 14px; border-radius: 999px; background: var(--vio); color: #fff; text-align: center; font-weight: 500; box-shadow: 0 12px 22px -12px rgba(90, 75, 194, .8); }
-
-/* — 3. Автосервис: светлый бетон, жёлто-чёрная лента, очередь как парковка — */
-.ms-auto { --bg-s: #ebebe7; --ink-s: #121212; --yel: #ffd23f; padding: 46px 14px 14px; }
-.ms-auto .a2-tape { position: absolute; left: 0; right: 0; top: 0; height: 36px; background: repeating-linear-gradient(-45deg, var(--yel) 0 14px, #121212 14px 28px); }
-.ms-auto .a2-name { font: 400 40px/1 "Russo One", sans-serif; letter-spacing: -.01em; }
-.ms-auto .a2-sub { margin-top: 6px; font-size: 11px; opacity: .7; }
-.ms-auto .a2-photo { position: relative; height: 178px; margin-top: 12px; border-radius: 6px; overflow: hidden; }
-.ms-auto .a2-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 40%; filter: saturate(1.05); }
-.ms-auto .a2-tag { position: absolute; left: 10px; bottom: 10px; padding: 7px 10px; background: var(--yel); color: #121212; font-size: 10px; line-height: 1.2; }
-.ms-auto .a2-tag b { font: 400 16px/1 "Russo One", sans-serif; }
-.ms-auto .a2-q { margin-top: 12px; padding: 12px; border-radius: 6px; background: #121212; color: #fff; }
-.ms-auto .a2-q > p { display: flex; justify-content: space-between; font-size: 11px; }
-.ms-auto .a2-q > p b { font: 400 12px/1 "Russo One", sans-serif; letter-spacing: .04em; text-transform: uppercase; }
-.ms-auto .a2-q > p span { color: var(--yel); }
-.ms-auto .a2-slots { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; margin-top: 10px; }
-.ms-auto .a2-slots span { display: grid; justify-items: center; gap: 4px; padding: 6px 0 5px; border: 1px solid #3a3a3a; border-top: 0; font-size: 9px; color: #9a9a9a; }
-.ms-auto .a2-slots .car i { width: 22px; height: 12px; border-radius: 5px 5px 3px 3px; background: #6d6d6d; box-shadow: 0 2px 0 -1px #121212, 4px 3px 0 -2px #ccc, -4px 3px 0 -2px #ccc; }
-.ms-auto .a2-slots .free { border-color: var(--yel); color: var(--yel); font: 400 10px/1 "Russo One", sans-serif; align-content: center; background: rgba(255, 210, 63, .12); }
-.ms-auto .a2-list { margin-top: 10px; }
-.ms-auto .a2-list p { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px dashed rgba(18, 18, 18, .25); font-size: 12px; }
-.ms-auto .a2-list b { font: 400 13px/1 "Russo One", sans-serif; }
-.ms-auto .a2-cta { margin-top: auto; display: flex; justify-content: space-between; padding: 14px 16px; border-radius: 6px; background: #121212; color: var(--yel); font: 400 13px/1 "Russo One", sans-serif; letter-spacing: .02em; }
-.ms-auto .a2-cta i { font-style: normal; }
-
-/* — 4. Юрист: бутылочно-зелёный и латунь, круговая диаграмма — */
-.ms-law { --bg-s: #0f3b2e; --ink-s: #f3ecd9; --brass: #c9a45c; }
-.ms-law .l2-top { display: grid; gap: 3px; padding-bottom: 10px; border-bottom: 1px solid rgba(201, 164, 92, .45); }
-.ms-law .l2-name { font: 400 20px/1.1 "Yeseva One", serif; color: var(--brass); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.ms-law .l2-top span { font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; opacity: .7; }
-.ms-law .l2-photo { position: relative; height: 180px; margin: 14px 8px 0 0; box-shadow: 8px 8px 0 -1px #0f3b2e, 8px 8px 0 0 var(--brass); }
-.ms-law .l2-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 68% 30%; }
-.ms-law .l2-title { margin-top: 20px; font: 400 24px/1.15 "Yeseva One", serif; }
-.ms-law .l2-stat { display: grid; grid-template-columns: 70px 1fr; align-items: center; column-gap: 14px; margin-top: 14px; position: relative; }
-.ms-law .l2-stat svg { width: 70px; height: 70px; transform: rotate(-90deg); }
-.ms-law .l2-stat circle { fill: none; stroke: rgba(243, 236, 217, .14); stroke-width: 8; }
-.ms-law .l2-stat circle.v { stroke: var(--brass); stroke-dasharray: 78 100; stroke-linecap: round; }
-.ms-law .ms-el.on .l2-stat circle.v, .ms-law .l2-stat.on circle.v { animation: donut 1.4s var(--ease-out) .2s both; }
-@keyframes donut { from { stroke-dasharray: 0 100; } }
-.ms-law .l2-stat b { position: absolute; left: 0; width: 70px; text-align: center; font: 400 17px/1 "Yeseva One", serif; color: var(--brass); }
-.ms-law .l2-stat p { font-size: 11.5px; line-height: 1.35; opacity: .9; }
-.ms-law .l2-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
-.ms-law .l2-facts p { padding: 10px; border: 1px solid rgba(201, 164, 92, .4); font-size: 10.5px; line-height: 1.3; opacity: .95; }
-.ms-law .l2-facts b { display: block; margin-bottom: 3px; font: 400 16px/1 "Yeseva One", serif; color: var(--brass); }
-.ms-law .l2-cta { margin-top: auto; padding: 14px; background: var(--brass); color: #0f3b2e; text-align: center; font-weight: 500; letter-spacing: .02em; }
-
 /* — 5. Онлайн-школа: в духе квиза — карточка с вопросом и наклейки, но мятная гамма — */
 .ms-school { --bg-s: #e7f3ec; --ink-s: #17332b; --grn: #1f8a66; --sun: #ffd166; }
 .ms-school .s-nav { display: flex; align-items: center; gap: 9px; }
@@ -382,28 +279,6 @@ h2 { font-size: clamp(2.1rem, 3.6vw, 3.25rem); }
 .ms-school .s-teacher b { display: block; font-weight: 500; }
 .ms-auto .a-note { margin: 12px 14px 0; display: flex; justify-content: space-between; font-size: 11px; opacity: .7; }
 .ms-school .s-foot { margin-top: auto; text-align: center; font-size: 10.5px; opacity: .65; }
-
-/* — 6. Пекарня: томатно-красная, отсчёт до новой партии из печи — */
-.ms-cafe { --bg-s: #e4472d; --ink-s: #fff4e4; --but: #ffd28a; }
-.ms-cafe .c2-name { font: 400 40px/1.25 "Pacifico", cursive; color: #fff4e4; padding-bottom: 2px; }
-.ms-cafe .c2-sub { font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; opacity: .85; }
-.ms-cafe .c2-photo { position: relative; height: 168px; margin: 14px 6px 0; padding: 6px; background: #fff4e4; rotate: -3deg; box-shadow: 0 16px 26px -14px rgba(80, 10, 0, .6); --r0: -10deg; }
-.ms-cafe .c2-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; }
-.ms-cafe .c2-badge { position: absolute; right: -10px; top: -14px; display: grid; place-items: center; width: 66px; height: 66px; border-radius: 50%; background: var(--but); color: #7a2412; font: 400 12px/1.05 "Pacifico", cursive; text-align: center; rotate: 12deg; }
-.ms-cafe .c2-oven { margin-top: 18px; padding: 12px 14px; border-radius: 18px; background: rgba(0, 0, 0, .14); }
-.ms-cafe .c2-t { font-size: 12px; }
-.ms-cafe .c2-t b { font: 400 20px/1 "Pacifico", cursive; color: var(--but); font-variant-numeric: tabular-nums; }
-.ms-cafe .c2-batches { position: relative; display: flex; justify-content: space-between; margin-top: 12px; padding-top: 14px; font-size: 9.5px; }
-.ms-cafe .c2-batches::before { content: ""; position: absolute; left: 4px; right: 4px; top: 4px; height: 2px; background: linear-gradient(90deg, #fff4e4 66%, rgba(255, 244, 228, .3) 66%); }
-.ms-cafe .c2-batches span { position: relative; opacity: .7; }
-.ms-cafe .c2-batches span::before { content: ""; position: absolute; left: 50%; top: -14px; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; background: #e4472d; box-shadow: inset 0 0 0 2px #fff4e4; }
-.ms-cafe .c2-batches .done::before { background: #fff4e4; }
-.ms-cafe .c2-batches .next { opacity: 1; font-weight: 500; color: var(--but); }
-.ms-cafe .c2-batches .next::before { background: var(--but); box-shadow: 0 0 0 4px rgba(255, 210, 138, .35); animation: livePulse 1.4s infinite; }
-.ms-cafe .c2-menu { margin-top: 10px; }
-.ms-cafe .c2-menu p { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; font-size: 12px; }
-.ms-cafe .c2-menu b { padding: 4px 9px; border-radius: 999px; background: #fff4e4; color: #b8311c; font-weight: 500; font-size: 11px; }
-.ms-cafe .c2-cta { margin-top: auto; padding: 14px; border-radius: 999px; background: #fff4e4; color: #b8311c; text-align: center; font-weight: 500; }
 
 /* ---------- Цены: полоски сроков ---------- */
 .price-scale { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 3fr) minmax(0, 3fr); margin-bottom: 10px; color: var(--ink-2); font-size: .78rem; letter-spacing: .06em; }
@@ -495,7 +370,7 @@ h2 { font-size: clamp(2.1rem, 3.6vw, 3.25rem); }
 .pv { width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: transparent; color: var(--ink); overflow: hidden; }
 .pv::backdrop { background: rgba(10, 13, 22, .78); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
 .pv[open] { display: flex; align-items: center; justify-content: center; }
-.pv-box { position: relative; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 14px; width: min(1180px, calc(100vw - 32px)); height: min(900px, calc(100dvh - 32px)); }
+.pv-box { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) auto;   /* minmax(0,…): длинное название не растягивает окно шире экрана */ gap: 14px; width: min(1180px, calc(100vw - 32px)); height: min(900px, calc(100dvh - 32px)); }
 .pv-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .pv-name { min-width: 0; }
 .pv-type { color: var(--gold); font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; }
@@ -527,7 +402,7 @@ h2 { font-size: clamp(2.1rem, 3.6vw, 3.25rem); }
 .pv[open] .pv-box { animation: pvIn .5s var(--ease-out); }
 @keyframes pvIn { from { opacity: 0; transform: translateY(24px) scale(.98); } }
 @media (max-width: 700px) {
-  .pv-box { width: 100vw; height: 100dvh; gap: 0; grid-template-rows: auto minmax(0, 1fr); }
+  .pv-box { width: 100%; height: 100%; gap: 0; grid-template-rows: auto minmax(0, 1fr); }
   .pv-head { padding: 10px 12px 10px 16px; background: var(--bg); }
   .pv-open { display: none; }
   .pv-frame { border-radius: 0; }
@@ -676,18 +551,31 @@ html.pv-lock { overflow: hidden; }
   .b10-grid { grid-template-columns: 1fr; }
   .b10 .b10-orbit { justify-self: center; }
 }
-/* телефон: заголовок → сферы плитками → телефон → секундомер → кнопки */
+/* телефон (23.11, вторая версия): заголовок → сферы кнопками в две строки → поле названия →
+   телефон сразу под ними, по высоте экрана → текст и кнопки мессенджеров.
+   Нажали сферу — страница сама встаёт так, чтобы были видны и сферы, и телефон. */
 @media (max-width: 680px) {
-  .b10-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-  .b10-left, .b10 .b10-orbit, .b10 .side { display: contents; }
-  .b10-left > h2, .b10-left .builder-lead { grid-column: 1 / -1; }
-  .b10-left .builder-lead { margin: 6px 0 16px; }
-  .b10 .sp, .b10 .sp:nth-child(even) { width: 100%; margin: 0; order: 3; }
-  .b10 .sp.on { grid-column: 1 / -1; order: 2; }
-  .b10 .sp-pick { padding: 12px 14px; }
-  .b10 .phone-stage { grid-column: 1 / -1; justify-self: center; order: 4; margin-top: 26px; width: min(300px, 80vw); }
-  .b10-timer { grid-column: 1 / -1; justify-self: center; order: 5; margin-top: 22px; }
-  .b10 .builder-after { grid-column: 1 / -1; order: 6; }
+  .b10-grid { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .b10-left, .b10 .b10-orbit { display: contents; }
+  .b10-left .builder-lead { margin: 8px 0 16px; }
+  /* сферы — одной строкой, листаются пальцем вбок; справа край растворяется — видно, что есть ещё */
+  .b10 .side { order: 3; display: flex; gap: 8px; width: auto; margin: 0 calc(-1 * var(--gut)); padding: 2px var(--gut) 4px; overflow-x: auto; scrollbar-width: none;
+    scroll-snap-type: x proximity; scroll-padding: 0 var(--gut); scroll-margin-top: 84px; overscroll-behavior-x: contain;
+    -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); }
+  .b10 .side.end { -webkit-mask-image: none; mask-image: none; }
+  .b10 .side::-webkit-scrollbar { display: none; }
+  .b10 .sp, .b10 .sp:nth-child(even) { flex: none; width: auto; margin: 0; border-radius: 999px; scroll-snap-align: start; }
+  .b10 .sp-pick { padding: 9px 14px; }
+  .b10 .sp-pick b { font-size: .92rem; white-space: nowrap; }
+  .b10 .sp.on { box-shadow: 0 0 24px -8px rgba(217, 187, 133, .7); }
+  /* поле названия — отдельной строкой под сферами */
+  .b10 .b10-orbit > .sp-name { order: 4; }
+  .b10 .b10-orbit.picked > .sp-name { display: grid; grid-template-columns: minmax(0, 7.6em) minmax(0, 1fr); align-items: center; gap: 10px; margin-top: 12px; padding: 0; animation: nameIn .5s var(--ease-out); }
+  .b10 .b10-orbit > .sp-name .sp-name-l { color: var(--ink-2); font-size: .8rem; line-height: 1.25; }
+  .b10 .b10-orbit > .sp-name input { font-size: 16px; background: rgba(243, 239, 232, .06); box-shadow: inset 0 0 0 1px rgba(217, 187, 133, .55); }
+  .b10 .b10-orbit > .sp-name input:focus { box-shadow: inset 0 0 0 1.5px var(--gold); }
+  .b10 .phone-stage { order: 5; justify-self: center; margin-top: 16px; width: min(270px, 74vw, calc((100svh - 215px) * 9 / 18.5)); }
+  .b10 .builder-after { order: 6; }
   .b10 .wires { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .b10 .wires path.on { animation: none; } }
@@ -927,17 +815,31 @@ html.pv-lock { overflow: hidden; }
   .kr-side .kr-bw-wrap{max-width:440px;margin-left:auto}
 }
 /* телефон и планшет: без закрепления, шаги друг под другом */
+.kr-hint-m{display:none}
+/* телефон (23.11): сверху окно сайта «Флора», под ним кружочки шагов, ниже карточка шага.
+   Карточки листаются пальцем вбок — окно сайта и кружочки меняются вместе с ними. */
 @media (max-width:900px){
   .kr{height:auto;padding:var(--sec) 0}
   .kr-pin{position:static;height:auto;display:block;overflow:visible}
-  .kr-road,.kr-hint{display:none}
-  .kr-box{grid-template-columns:1fr}
-  .kr-side{order:-1}
+  .kr-panel{gap:0}
+  .kr-box{display:contents}
+  .kr-head{order:0;margin-bottom:22px}
+  .kr-side{order:1}
   .kr-side .kr-bw-wrap{max-width:420px;margin:0 auto}
-  .kr-view{overflow:visible}
-  .kr-track{flex-direction:column;gap:14px;transform:none !important}
-  .kr-step{opacity:1}
+  .kr-road{order:2;margin-top:26px}
+  .kr-pt{padding:0 2px}
+  .kr-pt b{margin-top:4px;font-size:.78rem}
+  .kr-pt small{display:none}
+  .kr-hint{order:3;justify-content:center;margin-top:12px;font-size:.84rem}
+  .kr-hint .kr-mouse,.kr-hint-d{display:none}
+  .kr-hint-m{display:inline-flex;align-items:center;gap:8px}
+  .kr-swipe{font-style:normal;color:var(--gold);animation:krSwipe 1.4s ease-in-out infinite}
+  .kr-view{order:4;margin-top:14px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
+  .kr-view::-webkit-scrollbar{display:none}
+  .kr-track{gap:12px;transform:none !important;transition:none}
+  .kr-step{opacity:1;scroll-snap-align:start;scroll-snap-stop:always}
 }
+@keyframes krSwipe{50%{transform:translateX(6px)}}
 @media (max-width:560px){ .kr-side .kr-bw-wrap{max-width:300px} }
 @media (prefers-reduced-motion:reduce){ .kr *{transition:none !important;animation:none !important} }
 .kr-chk li b{color:var(--ink)}
@@ -1153,3 +1055,154 @@ html.pv-lock { overflow: hidden; }
 .ft-legal { display: flex; flex-wrap: wrap; gap: 6px 20px; padding-top: 16px; padding-bottom: 30px; border-top: 1px solid rgba(243, 239, 232, .08); font-size: .8rem; color: rgba(196, 195, 198, .75); }
 .ft .ft-legal a { color: rgba(196, 195, 198, .75); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(196, 195, 198, .35); }
 .ft .ft-legal a:hover { color: var(--gold); }
+
+/* ================================================================
+   «10 секунд» — новые мини-сайты (23.11, по референсам Татьяны).
+   Онлайн-школа осталась прежней (выше).
+   ================================================================ */
+
+/* — Салон (референс Fenyly): огромное название красным, чёрно-белая рука «встаёт» в буквы,
+     подписи в квадратных скобках, острые красные кнопки — */
+.ms-beauty { --bg-s: #fff; --ink-s: #141414; --red: #b3121e; font-family: "Inter Tight", var(--f-t); }
+.ms-beauty .fy-nav { display: flex; justify-content: space-between; align-items: center; font-size: 8.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--red); }
+.ms-beauty .fy-nav b { font-weight: 600; }
+.ms-beauty .fy-hero { position: relative; height: 282px; margin: 4px -14px 0; }
+/* слово над рукой: читается целиком, кончики пальцев лишь касаются букв снизу */
+.ms-beauty .fy-word { position: absolute; z-index: 2; left: 8px; right: 8px; top: 16px; margin: 0; font: 400 116px/1.1 "Prata", serif; color: var(--red); text-align: center; letter-spacing: -.02em; }
+/* рука на белом фоне: белое «растворяется» (multiply), и пальцы встают прямо в красные буквы */
+.ms-beauty .fy-hero img { position: absolute; left: 50%; top: 104px; width: 214px; height: calc(100% - 104px); object-fit: cover; object-position: 50% 14%; transform: translateX(-46%);
+  mix-blend-mode: multiply; filter: contrast(1.06) brightness(1.04);
+  -webkit-mask-image: linear-gradient(#000 72%, transparent), linear-gradient(90deg, transparent, #000 22%); -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(#000 72%, transparent), linear-gradient(90deg, transparent, #000 22%); mask-composite: intersect; }
+.ms-beauty .fy-kind { position: absolute; left: 14px; top: 8px; margin: 0; font-size: 8.5px; letter-spacing: .14em; text-transform: uppercase; color: #6d6d6d; }
+.ms-beauty .fy-row { display: flex; justify-content: space-between; gap: 10px; font-size: 10.5px; line-height: 1.35; }
+.ms-beauty .fy-row b { display: block; margin-bottom: 2px; color: var(--red); font-size: 8.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; text-decoration: underline; text-underline-offset: 2px; }
+.ms-beauty .fy-row .r { text-align: right; }
+.ms-beauty .fy-btn { margin-top: 12px; padding: 12px; background: var(--red); color: #fff; text-align: center; font-size: 10.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+.ms-beauty .fy-h { display: flex; justify-content: space-between; align-items: baseline; margin-top: auto; padding-top: 14px; }
+.ms-beauty .fy-h h4 { margin: 0; font: 400 25px/1 "Prata", serif; color: var(--red); text-transform: uppercase; letter-spacing: .02em; }
+.ms-beauty .fy-h span { color: var(--red); font-size: 8.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; text-decoration: underline; text-underline-offset: 2px; }
+.ms-beauty .fy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+.ms-beauty .fy-card { display: grid; align-content: start; gap: 2px; padding: 6px 6px 8px; background: #f1eeeb; font-size: 9.5px; text-transform: uppercase; letter-spacing: .02em; }
+.ms-beauty .fy-card img { width: 100%; height: 128px; object-fit: cover; object-position: 50% 40%; margin-bottom: 5px; }
+.ms-beauty .fy-card small { color: var(--red); font-size: 7.5px; letter-spacing: .14em; }
+.ms-beauty .fy-card b { font-size: 11px; font-weight: 600; }
+.ms-beauty .fy-red { background: var(--red); color: #fff; align-content: end; }
+.ms-beauty .fy-red small { color: #ffc9cc; }
+.ms-beauty .fy-red .fy-big { margin-bottom: auto; padding: 4px 0 0; font: 400 30px/1 "Prata", serif; text-transform: none; }
+
+/* — Автосервис (референсы Gamedev + Fitness): чёрный и красный, огромные узкие буквы, наклейка под наклоном,
+     список услуг с линиями, круглая красная кнопка — */
+.ms-auto { --bg-s: #0b0b0c; --ink-s: #f2f2f2; --red: #e3202c; font-family: "Inter Tight", var(--f-t); }
+.ms-auto .rx-nav { display: flex; align-items: center; gap: 8px; font-size: 8.5px; letter-spacing: .12em; text-transform: uppercase; }
+.ms-auto .rx-logo { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 6px; background: var(--red); font: 700 13px/1 "Oswald", sans-serif; color: #fff; }
+.ms-auto .rx-menu { opacity: .6; }
+.ms-auto .rx-pill { margin-left: auto; padding: 6px 10px; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--red); color: var(--red); font-weight: 600; }
+.ms-auto .rx-t1, .ms-auto .rx-t2 { margin: 0; font: 700 44px/1 "Oswald", sans-serif; text-transform: uppercase; letter-spacing: -.01em; text-align: center; }
+.ms-auto .rx-t1 { margin-top: 16px; }
+.ms-auto .rx-t2 { color: var(--red); }
+.ms-auto .rx-photo { position: relative; height: 158px; margin: 12px -14px 0; }
+.ms-auto .rx-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 70%; filter: contrast(1.1) saturate(1.15); }
+.ms-auto .rx-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(#0b0b0c, transparent 22%, transparent 70%, #0b0b0c); }
+.ms-auto .rx-badge { position: absolute; z-index: 1; right: 16px; top: -14px; display: grid; place-items: center; align-content: center; width: 66px; height: 66px; border-radius: 50%; background: #ffd23f; color: #0b0b0c;
+  font-size: 7.5px; line-height: 1.1; text-align: center; text-transform: uppercase; letter-spacing: .04em; rotate: 12deg; }
+.ms-auto .rx-badge b { font: 700 19px/1 "Oswald", sans-serif; letter-spacing: 0; }
+.ms-auto .rx-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 8px; }
+.ms-auto .rx-stats p { padding-left: 8px; border-left: 1px solid rgba(255, 255, 255, .18); font-size: 8.5px; line-height: 1.25; text-transform: uppercase; letter-spacing: .06em; opacity: .9; }
+.ms-auto .rx-stats b { font: 600 26px/1 "Oswald", sans-serif; color: var(--red); margin-right: 2px; }
+.ms-auto .rx-list { list-style: none; margin: 12px 0 0; padding: 0; }
+.ms-auto .rx-list li { display: flex; justify-content: space-between; align-items: baseline; padding: 7px 0; border-top: 1px solid rgba(255, 255, 255, .16); font: 500 15px/1 "Oswald", sans-serif; text-transform: uppercase; }
+.ms-auto .rx-list b { font: 400 11px/1 "Inter Tight", sans-serif; opacity: .75; }
+.ms-auto .rx-cta { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+.ms-auto .rx-cta p { font: 600 18px/1.05 "Oswald", sans-serif; }
+.ms-auto .rx-cta small { display: block; margin-bottom: 3px; font: 400 8.5px/1 "Inter Tight", sans-serif; letter-spacing: .12em; text-transform: uppercase; opacity: .6; }
+.ms-auto .rx-go { display: grid; place-items: center; align-content: center; width: 76px; height: 76px; border-radius: 50%; background: var(--red); color: #fff; font: 600 13px/1 "Oswald", sans-serif; text-transform: uppercase; letter-spacing: .04em;
+  box-shadow: 0 0 34px -6px rgba(227, 32, 44, .8); }
+.ms-auto .rx-go i { font-style: normal; font-size: 16px; }
+
+/* — Юрист (референс Agentura): серый фон, чёрно-белый портрет, тонкая геометрия поверх,
+     «печатный» моноширинный шрифт, нумерованный список — */
+.ms-law { --bg-s: #d5d5d3; --ink-s: #0e0e0e; font-family: "IBM Plex Mono", monospace; }
+.ms-law .ag-nav { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; font-size: 8px; line-height: 1.25; text-transform: uppercase; letter-spacing: .04em; }
+.ms-law .ag-nav .r { text-align: right; }
+.ms-law .ag-logo { display: grid; place-items: center; width: 26px; height: 26px; background: #0e0e0e; color: #d5d5d3; font: 600 13px/1 "Inter Tight", sans-serif; }
+.ms-law .ag-hero { position: relative; height: 252px; margin: 12px -14px 0; overflow: hidden; background: #1a1a1a; }
+.ms-law .ag-hero img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 8%; filter: grayscale(1) contrast(1.15) brightness(1.05); }
+.ms-law .ag-geo { position: absolute; inset: 0; width: 100%; height: 100%; }
+/* снизу фото затемняется — название бюро не сливается с блузкой */
+.ms-law .ag-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 58%, rgba(0, 0, 0, .82) 88%); pointer-events: none; }
+.ms-law .ag-name, .ms-law .ag-l, .ms-law .ag-r { z-index: 1; }
+.ms-law .ag-geo * { fill: none; stroke: rgba(255, 255, 255, .55); stroke-width: .8; }
+.ms-law .ms-el.on .ag-geo * { stroke-dasharray: 900; animation: agDraw 2.2s var(--ease-out) .3s both; }
+@keyframes agDraw { from { stroke-dashoffset: 900; } to { stroke-dashoffset: 0; } }
+.ms-law .ag-name { position: absolute; left: 12px; right: 12px; bottom: 34px; margin: 0; color: #fff; text-align: center; font: 600 27px/1.1 "Inter Tight", sans-serif; text-transform: uppercase; letter-spacing: .03em; text-shadow: 0 2px 18px rgba(0, 0, 0, .5); }
+.ms-law .ag-l, .ms-law .ag-r { position: absolute; bottom: 10px; margin: 0; color: #fff; font-size: 7.5px; line-height: 1.3; text-transform: uppercase; letter-spacing: .04em; }
+.ms-law .ag-l { left: 12px; } .ms-law .ag-r { right: 12px; text-align: right; }
+.ms-law .ag-big { margin-top: 14px; font: 600 20px/1.05 "Inter Tight", sans-serif; text-transform: uppercase; letter-spacing: -.01em; }
+.ms-law .ag-big span { color: #7b7b7b; }
+.ms-law .ag-list { list-style: none; margin: 12px 0 0; padding: 0; }
+.ms-law .ag-list li { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-top: 1px solid rgba(14, 14, 14, .25); font-size: 10.5px; text-transform: uppercase; }
+.ms-law .ag-list span { color: #7b7b7b; font-size: 9px; }
+.ms-law .ag-list i { margin-left: auto; font-style: normal; }
+.ms-law .ag-stat { display: flex; align-items: center; gap: 12px; margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(14, 14, 14, .25); }
+.ms-law .ag-stat b { font: 600 32px/1 "Inter Tight", sans-serif; letter-spacing: -.03em; }
+.ms-law .ag-stat p { font-size: 8.5px; line-height: 1.3; text-transform: uppercase; }
+.ms-law .ag-cta { display: flex; justify-content: space-between; margin-top: auto; padding: 13px 14px; background: #0e0e0e; color: #e8e8e6; font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+.ms-law .ag-cta i { font-style: normal; }
+
+/* — Репетитор (референс «Елена Дюссолье»): бежевая бумага, серо-голубая полоса, тонкие заглавные,
+     полароиды на скотче, записка с подписью от руки — */
+.ms-tutor { --bg-s: #f2ede6; --ink-s: #39444d; --sea: #6d8591; font-family: "Cormorant", serif; font-size: 13px; }
+.ms-tutor .tt-nav { display: flex; justify-content: space-between; align-items: start; font-size: 11px; line-height: 1.15; }
+.ms-tutor .tt-nav u { text-underline-offset: 2px; }
+.ms-tutor .tt-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+.ms-tutor .tt-left { display: grid; align-content: center; justify-items: center; text-align: center; gap: 6px; }
+.ms-tutor .tt-role { font-size: 17px; font-weight: 300; color: var(--sea); }
+.ms-tutor .tt-name { font: 500 21px/1.02 "Cormorant", serif; text-transform: uppercase; letter-spacing: .02em; color: #2f3a42; overflow-wrap: anywhere; }
+.ms-tutor .tt-sub { font-size: 11.5px; line-height: 1.25; opacity: .85; }
+.ms-tutor .tt-mini { width: 30px; height: 36px; object-fit: cover; margin-top: 4px; }
+.ms-tutor .tt-photo { position: relative; height: 232px; margin-right: -14px; }
+.ms-tutor .tt-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 40% 25%; }
+.ms-tutor .tt-note { position: absolute; left: -26px; right: 8px; bottom: 10px; padding: 8px 10px 6px; background: #fbf9f6; box-shadow: 0 8px 18px -10px rgba(40, 50, 60, .5); font-size: 10.5px; line-height: 1.25; text-align: center; }
+.ms-tutor .tt-note svg { display: block; width: 18px; height: 22px; margin: 4px auto 0; fill: none; stroke: #b9a58f; stroke-width: 1.1; stroke-linecap: round; }
+.ms-tutor .tt-sign { display: block; font: 400 15px/1 "Marck Script", cursive; color: var(--sea); }
+.ms-tutor .tt-band { position: relative; margin: 14px -14px 0; padding: 16px 14px 18px; min-height: 196px; background: var(--sea); color: #eef2f3; }
+.ms-tutor .tt-k { font-size: 11px; font-weight: 300; opacity: .85; }
+.ms-tutor .tt-about { width: 182px; margin-top: 6px; font: 300 17px/1.12 "Cormorant", serif; }
+.ms-tutor .tt-about b { font-weight: 600; text-transform: uppercase; letter-spacing: .02em; }
+.ms-tutor .tt-band .tt-sign { margin-top: 8px; color: #f4efe8; }
+.ms-tutor .tt-pol { position: absolute; padding: 5px 5px 16px; background: #fbf9f6; box-shadow: 0 10px 18px -8px rgba(0, 0, 0, .45); }
+.ms-tutor .tt-pol img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ms-tutor .tt-pol::before { content: ""; position: absolute; left: 50%; top: -7px; width: 36px; height: 13px; margin-left: -18px; background: rgba(236, 230, 218, .82); rotate: -4deg; }
+.ms-tutor .tt-p1 { right: 12px; top: 18px; width: 86px; height: 104px; rotate: 6deg; }
+.ms-tutor .tt-p2 { right: 64px; bottom: -22px; width: 70px; height: 80px; rotate: -8deg; z-index: 1; }
+.ms-tutor .tt-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 34px; }
+.ms-tutor .tt-stats p { position: relative; padding: 9px 8px 8px; background: #fbf9f6; text-align: center; font-size: 11px; line-height: 1.2; box-shadow: 0 8px 16px -12px rgba(40, 50, 60, .5); }
+.ms-tutor .tt-stats p:first-child { rotate: -2deg; } .ms-tutor .tt-stats p:last-child { rotate: 2deg; background: #dfe6e9; }
+.ms-tutor .tt-stats b { display: block; font: 500 24px/1 "Cormorant", serif; color: var(--sea); }
+.ms-tutor .tt-cta { margin-top: auto; padding: 12px; box-shadow: inset 0 0 0 1px var(--sea); color: #2f3a42; text-align: center; font: 500 14px/1 "Cormorant", serif; text-transform: uppercase; letter-spacing: .1em; }
+
+/* — Кондитерская (референс USHA): торт на ярко-розовом, огромное название, жёлтая волнистая лента
+     с бегущим текстом, ряд «Начинки», блок «О нас» с кондитером — */
+.ms-cafe { --bg-s: #fff8f1; --ink-s: #3b1426; --pink: #e0478d; --rose: #f8cfe0; font-family: var(--f-t); }
+.ms-cafe .uh-hero { position: relative; height: 312px; margin: -46px -14px 0; overflow: hidden; background: linear-gradient(#8e254d 96px, rgba(142, 37, 77, 0) 170px), #8e254d url("../img/try2/cake-hero.webp") 50% 96px / auto 290px no-repeat;   /* торт ниже названия, низ уходит за край, как в референсе */ color: #fff7fb; text-align: center; }
+.ms-cafe .uh-nav { position: absolute; left: 12px; right: 12px; top: 44px; display: flex; justify-content: space-between; align-items: center; font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+.ms-cafe .uh-nav span { padding: 5px 10px; border-radius: 999px; background: rgba(255, 255, 255, .22); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.ms-cafe .uh-k { position: absolute; left: 0; right: 0; top: 78px; font: 700 12px/1 "Alumni Sans", sans-serif; letter-spacing: .22em; text-transform: uppercase; }
+.ms-cafe .uh-name { position: absolute; left: 12px; right: 12px; top: 90px; margin: 0; font: 900 104px/1 "Alumni Sans", sans-serif; text-transform: uppercase; letter-spacing: -.01em; text-shadow: 0 6px 24px rgba(90, 10, 50, .35); }
+.ms-cafe .uh-ribbon { position: absolute; left: 0; top: 176px; width: 100%; height: 70px; overflow: visible; }
+.ms-cafe .uh-ribbon .band { fill: none; stroke: #f7c948; stroke-width: 19; stroke-linecap: butt; filter: drop-shadow(0 5px 6px rgba(80, 0, 40, .3)); }
+.ms-cafe .uh-ribbon text { font: 800 12.5px "Alumni Sans", sans-serif; letter-spacing: .08em; fill: #7a1844; text-transform: uppercase; }
+.ms-cafe .uh-h { display: flex; align-items: center; gap: 8px; margin-top: 14px; }
+.ms-cafe .uh-h h4 { margin: 0; font: 800 30px/1 "Alumni Sans", sans-serif; color: var(--pink); text-transform: uppercase; }
+.ms-cafe .uh-h small { font-size: 9px; line-height: 1.15; opacity: .7; }
+.ms-cafe .uh-h span { margin-left: auto; padding: 6px 12px; border-radius: 999px; background: var(--rose); color: #a4235f; font-size: 10px; }
+.ms-cafe .uh-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 8px; }
+.ms-cafe .uh-row div { display: grid; gap: 4px; font-size: 8px; line-height: 1.15; text-transform: uppercase; letter-spacing: .03em; color: #a4235f; }
+.ms-cafe .uh-row img { width: 100%; height: 72px; object-fit: cover; border-radius: 6px; }
+.ms-cafe .uh-about { position: relative; height: 112px; margin-top: 12px; border-radius: 12px; overflow: hidden; display: grid; place-items: center; align-content: center; gap: 8px; color: #fff; }
+.ms-cafe .uh-about img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 40% 45%; }
+.ms-cafe .uh-about::before { content: ""; position: absolute; inset: 0; z-index: 1; background: rgba(40, 10, 25, .28); }
+.ms-cafe .uh-about b { position: relative; z-index: 2; font: 800 30px/1 "Alumni Sans", sans-serif; text-transform: uppercase; letter-spacing: .01em; }
+.ms-cafe .uh-about span { position: relative; z-index: 2; padding: 5px 12px; border-radius: 999px; background: var(--pink); font-size: 9.5px; }
+.ms-cafe .uh-cta { display: flex; justify-content: center; margin-top: auto; padding: 14px; border-radius: 999px; background: var(--pink); color: #fff; font-size: 12px; font-weight: 500; box-shadow: 0 10px 20px -12px rgba(224, 71, 141, .9); }

@@ -81,13 +81,14 @@
     PW = window.innerWidth; PH = window.innerHeight;
     pc.width = PW * dpr; pc.height = PH * dpr;
     pctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    var n = Math.round(Math.min(70, PW * PH / 20000));
+    // на телефоне экран маленький — по прежней формуле выходило ~15 искорок, их почти не было видно
+    var n = PW < 700 ? 34 : Math.round(Math.min(70, PW * PH / 20000));
     psparks = [];
     for (var i = 0; i < n; i++) psparks.push(pageSpark(Math.random() * PH));
   }
   function pageSpark(y) {
     var z = .25 + Math.random() * .75;
-    return { x: Math.random() * PW, y: y, z: z, r: .5 + z * 1.4, vy: -(.05 + z * .22), vx: (Math.random() - .5) * .1,
+    return { x: Math.random() * PW, y: y, z: z, r: (.5 + z * 1.4) * (PW < 700 ? 1.3 : 1), vy: -(.05 + z * .22), vx: (Math.random() - .5) * .1,
              ph: Math.random() * Math.PI * 2, sp: .015 + Math.random() * .03 };
   }
   function drawPage() {
@@ -335,46 +336,53 @@
     arrow: '<path d="M0 4h25M21 1l4 3-4 3"/>'
   };
 
+  // «Студия «Лепесток»» → { k: "Студия", w: "Лепесток" }; без кавычек — всё название в w
+  function parts(n) { var m = n.match(/^(.*?)\s*«(.+)»\s*$/); return m ? { k: m[1], w: m[2] } : { k: "", w: n }; }
+  function first(n) { return n.replace(/[«»"]/g, "").trim().split(/\s+/)[0] || n; }
+  var FLOWER = '<svg viewBox="0 0 20 26" aria-hidden="true"><path d="M10 25V11M10 11c-3-1-5-4-4-7 2 0 4 2 4 5 0-3 2-5 4-5 1 3-1 6-4 7M10 18c-2-1-4-1-5 1M10 16c2-1 4-1 5 1"/></svg>';
+
   var SPHERES = {
-    beauty: { label: "салон красоты", def: "Студия «Лепесток»", html: function (n) { var ring = esc(n.replace(/[«»"]/g, "")) + " • "; return '' +
-      '<div class="b2-top ms-el"><b class="b2-name">' + esc(n) + '</b><span class="b2-pill">запись</span></div>' +
-      '<div class="b2-photo ms-el"><img src="img/try/beauty.webp" alt="">' +
-        '<svg class="b2-ring" viewBox="0 0 100 100"><defs><path id="b2r" d="M50 50m-38 0a38 38 0 1 1 76 0a38 38 0 1 1-76 0"/></defs><text><textPath href="#b2r" textLength="236" lengthAdjust="spacingAndGlyphs">' + ring + ring + '</textPath></text></svg></div>' +
-      '<p class="b2-title ms-el">Маникюр, который<br>держится <em>4 недели</em></p>' +
-      '<div class="b2-day ms-el"><p><b>Сегодня свободно 3 окна</b><span>10:00 — 20:00</span></p>' +
-        '<div class="b2-line"><i class="busy" style="left:0;width:18%"></i><i class="free" style="left:18%;width:12%"></i><i class="busy" style="left:30%;width:28%"></i><i class="free" style="left:58%;width:10%"></i><i class="busy" style="left:68%;width:18%"></i><i class="free" style="left:86%;width:14%"></i></div>' +
-        '<div class="b2-hours"><span>10</span><span>12</span><span>14</span><span>16</span><span>18</span><span>20</span></div></div>' +
-      '<div class="b2-list ms-el"><p><span>Маникюр + покрытие</span><b>1 500</b></p><p><span>Брови под ключ</span><b>900</b></p><p><span>Стрижка</span><b>1 200</b></p></div>' +
-      '<div class="b2-cta ms-el">Занять окно в 12:00</div>'; } },
+    /* Салон — по референсу Fenyly */
+    beauty: { label: "салон красоты", def: "Студия «Лоск»", html: function (n) { var p = parts(n); return '' +
+      '<div class="fy-nav ms-el"><span>маникюр · брови · волосы</span><b>[запись]</b></div>' +
+      '<div class="fy-hero ms-el"><p class="fy-kind">' + esc(p.k || "студия красоты") + '</p><p class="fy-word fit">' + esc(p.w) + '</p><img src="img/try2/beauty-c.webp" alt=""></div>' +
+      '<div class="fy-row ms-el"><p><b>[окна сегодня]</b>12:00 · 15:30 · 18:00</p><p class="r"><b>[первый визит]</b>скидка 20%</p></div>' +
+      '<div class="fy-btn ms-el">Записаться онлайн</div>' +
+      '<div class="fy-h ms-el"><h4>Прайс</h4><span>[все услуги]</span></div>' +
+      '<div class="fy-grid ms-el"><div class="fy-card"><img src="img/try2/beauty-b.webp" alt=""><small>топ</small><p>Маникюр + покрытие</p><b>1 500 ₽</b></div>' +
+        '<div class="fy-card fy-red"><span class="fy-big">Брови</span><small>new</small><p>Под ключ · 40 минут</p><b>900 ₽</b></div></div>'; } },
 
-    psy: { label: "психолог", def: "Анна Смирнова", html: function (n) { return '' +
-      '<div class="p2-top ms-el"><p><b class="p2-name">' + esc(n) + '</b><span>психолог · встречи онлайн</span></p><span class="p2-on">онлайн</span></div>' +
-      '<div class="p2-call ms-el"><img src="img/try/psy.webp" alt=""><span class="p2-live"><i></i>сессия <b data-tick="up" data-t="2892">48:12</b></span><span class="p2-self"></span>' +
-        '<span class="p2-ctrl"><i class="mic"></i><i class="cam"></i><i class="end"></i></span></div>' +
-      '<p class="p2-title ms-el">Можно начать<br>прямо из дома</p>' +
-      '<div class="p2-check ms-el"><p class="p2-ch">Чек-ап за 2 минуты</p>' +
-        '<p class="p2-bar"><span>сон</span><i style="--w:38%"></i></p><p class="p2-bar"><span>тревога</span><i style="--w:76%"></i></p><p class="p2-bar"><span>силы</span><i style="--w:30%"></i></p>' +
-        '<p class="p2-note">Похоже на усталость. Разберём на первой встрече</p></div>' +
-      '<div class="p2-cta ms-el">Записаться на онлайн-встречу</div>'; } },
+    /* Репетитор — по референсу «Елена Дюссолье»: бумага, серо-голубой, полароиды на скотче */
+    tutor: { label: "репетитор", def: "Анна Смирнова", html: function (n) { var f = esc(first(n)); return '' +
+      '<div class="tt-nav ms-el"><span>' + esc(n) + '</span><u>связаться</u></div>' +
+      '<div class="tt-hero ms-el"><div class="tt-left"><p class="tt-role">(Репетитор)</p><p class="tt-name">' + esc(n) + '</p><p class="tt-sub">английский для <span style="white-space:nowrap">5–11 класса</span>, онлайн</p><img class="tt-mini" src="img/try2/psy-c.webp" alt=""></div>' +
+        '<div class="tt-photo"><img src="img/try2/psy-c.webp" alt=""><p class="tt-note">Объясняю так, чтобы стало понятно с&nbsp;первого урока<span class="tt-sign">' + f + '</span>' + FLOWER + '</p></div></div>' +
+      '<div class="tt-band ms-el"><p class="tt-k">( обо мне )</p><p class="tt-about">Меня зовут <b>' + f + '</b>. Готовлю к&nbsp;<b>ОГЭ и&nbsp;ЕГЭ</b> уже <b>8&nbsp;лет</b></p><span class="tt-sign">с заботой о каждом ученике</span>' +
+        '<span class="tt-pol tt-p1"><img src="img/try2/tutor-c.webp" alt=""></span><span class="tt-pol tt-p2"><img src="img/try2/tutor-b.webp" alt=""></span></div>' +
+      '<div class="tt-stats ms-el"><p><b>300+</b>учеников</p><p><b>86</b>средний балл ЕГЭ</p></div>' +
+      '<div class="tt-cta ms-el">Записаться на пробный урок</div>'; } },
 
-    auto: { label: "автосервис", def: "Гараж 42", html: function (n) { return '' +
-      '<div class="a2-tape ms-el"></div>' +
-      '<p class="a2-name fit ms-el">' + chars(n.toUpperCase()) + '</p>' +
-      '<p class="a2-sub ms-el">Ремонт и ТО без очереди · цена до начала работ</p>' +
-      '<div class="a2-photo ms-el"><img src="img/try/auto.webp" alt=""><span class="a2-tag">мастер свободен<br><b>в 14:30</b></span></div>' +
-      '<div class="a2-q ms-el"><p><b>Очередь на сегодня</b><span>2 места свободно</span></p><div class="a2-slots">' +
-        '<span class="car"><i></i>9:00</span><span class="car"><i></i>11:00</span><span class="car"><i></i>13:00</span><span class="free">14:30</span><span class="car"><i></i>16:00</span><span class="free">18:00</span></div></div>' +
-      '<div class="a2-list ms-el"><p><span>Диагностика</span><b>800 ₽</b></p><p><span>Замена масла</span><b>600 ₽</b></p><p><span>Шиномонтаж</span><b>1 600 ₽</b></p></div>' +
-      '<div class="a2-cta ms-el">Записаться на 14:30 <i>→</i></div>'; } },
+    /* Автосервис — по референсам Gamedev + Fitness: чёрный и красный */
+    auto: { label: "автосервис", def: "Гараж 42", html: function (n, ini) { return '' +
+      '<div class="rx-nav ms-el"><span class="rx-logo">' + ini + '</span><span class="rx-menu">услуги · цены · отзывы</span><b class="rx-pill">запись</b></div>' +
+      '<p class="rx-t1 fit ms-el">Не просто ремонт.</p>' +
+      '<p class="rx-t2 fit ms-el">' + chars(n) + '.</p>' +
+      '<div class="rx-photo ms-el"><img src="img/try2/auto-a.webp" alt=""><span class="rx-badge"><b>−15%</b>на первое<br>ТО</span></div>' +
+      '<div class="rx-stats ms-el"><p><b>30</b>мин<br>диагностика</p><p><b>12</b>мес<br>гарантия</p><p><b>4,9</b>★<br>отзывы</p></div>' +
+      '<ul class="rx-list ms-el"><li><span>Диагностика</span><b>800 ₽</b></li><li><span>Замена масла</span><b>600 ₽</b></li><li><span>Шиномонтаж</span><b>1 600 ₽</b></li></ul>' +
+      '<div class="rx-cta ms-el"><p><small>Свободно сегодня</small>14:30 · 18:00</p><span class="rx-go">Запись<i>+</i></span></div>'; } },
 
-    law: { label: "юрист", def: "Бюро «Право»", html: function (n) { return '' +
-      '<div class="l2-top ms-el"><b class="l2-name">' + esc(n) + '</b><span>юридическая помощь · онлайн и в офисе</span></div>' +
-      '<div class="l2-photo ms-el"><img src="img/try/law.webp" alt=""></div>' +
-      '<p class="l2-title ms-el">Решаем споры —<br>чаще без суда</p>' +
-      '<div class="l2-stat ms-el"><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="32"/><circle class="v" cx="40" cy="40" r="32" pathLength="100"/></svg><b>78%</b>' +
-        '<p>споров закрываем<br>на этапе претензии,<br>без суда</p></div>' +
-      '<div class="l2-facts ms-el"><p><b>15 мин</b>первая консультация бесплатно</p><p><b>1 день</b>на ответ по документам</p></div>' +
-      '<div class="l2-cta ms-el">Задать вопрос юристу</div>'; } },
+    /* Юрист — по референсу Agentura: серый, ч/б портрет, тонкая геометрия, моноширинный шрифт */
+    law: { label: "юрист", def: "Бюро «Право»", html: function (n, ini) { return '' +
+      '<div class="ag-nav ms-el"><span>о бюро<br>услуги</span><b class="ag-logo">' + ini + '</b><span class="r">не обещаем —<br>объясняем</span></div>' +
+      '<div class="ag-hero ms-el"><img src="img/try2/law-a.webp" alt="">' +
+        '<svg class="ag-geo" viewBox="0 0 318 252" aria-hidden="true"><rect x="99" y="34" width="120" height="120" rx="22" transform="rotate(45 159 94)"/><rect x="79" y="14" width="160" height="160" rx="30" transform="rotate(45 159 94)"/>' +
+        '<circle cx="159" cy="94" r="98"/><circle cx="26" cy="94" r="30"/><circle cx="292" cy="94" r="30"/><path d="M0 94H318"/></svg>' +
+        '<p class="ag-name fit">' + esc(n) + '</p><p class="ag-l">юридическая помощь<br>онлайн и в офисе</p><p class="ag-r">15 минут<br>консультация 0 ₽</p></div>' +
+      '<p class="ag-big ms-el">Решаем споры&nbsp;— <span>чаще без&nbsp;суда.</span></p>' +
+      '<ul class="ag-list ms-el"><li><span>01</span>Семейные споры<i>→</i></li><li><span>02</span>Долги и банкротство<i>→</i></li><li><span>03</span>Недвижимость<i>→</i></li></ul>' +
+      '<div class="ag-stat ms-el"><b>78%</b><p>споров закрываем<br>на этапе претензии</p></div>' +
+      '<div class="ag-cta ms-el">Задать вопрос юристу<i>→</i></div>'; } },
 
     school: { label: "онлайн-школа", def: "Школа «Перемена»", html: function (n) { return '' +
       '<div class="s-nav ms-el"><span class="s-logo"><i></i><i></i><i></i></span><p><b class="s-name">' + esc(n) + '</b><span>онлайн-школа · 1–11 класс</span></p></div>' +
@@ -388,14 +396,16 @@
       '<div class="s-teacher ms-el"><i>М</i><p><b>Ведёт уроки Мария</b>готовит к ОГЭ и ЕГЭ, отвечает в чате</p></div>' +
       '<p class="s-foot ms-el">После ответов — план занятий и преподаватель</p>'; } },
 
-    cafe: { label: "кафе, пекарня", def: "Пекарня «Утро»", html: function (n) { return '' +
-      '<p class="c2-name fit ms-el">' + chars(n) + '</p>' +
-      '<p class="c2-sub ms-el">пекарня у дома · 7:00–21:00</p>' +
-      '<div class="c2-photo ms-el"><img src="img/try/cafe.webp" alt=""><span class="c2-badge">горячие<br>из печи</span></div>' +
-      '<div class="c2-oven ms-el"><p class="c2-t">Новая партия через <b data-tick="down" data-t="1453">24:13</b></p>' +
-        '<div class="c2-batches"><span class="done">7:00</span><span class="done">9:00</span><span class="done">11:00</span><span class="next">13:00</span><span>15:00</span></div></div>' +
-      '<div class="c2-menu ms-el"><p><span>Круассан</span><b>150 ₽</b></p><p><span>Хлеб на закваске</span><b>220 ₽</b></p><p><span>Синнабон</span><b>190 ₽</b></p></div>' +
-      '<div class="c2-cta ms-el">Заказать к 13:00</div>'; } }
+    /* Кондитерская — по референсу USHA: торт на розовом, огромное название, жёлтая лента с бегущим текстом */
+    cafe: { label: "кондитерская", def: "Кондитерская «Зефир»", html: function (n) { var p = parts(n), rb = "Торты на заказ • Десерты по своим рецептам • ", all = ""; for (var r = 0; r < 6; r++) all += rb; return '' +
+      '<div class="uh-hero ms-el"><div class="uh-nav"><span>☰ меню</span><span>♡ корзина</span></div><p class="uh-k">' + esc(p.k || "кондитерская") + '</p><p class="uh-name fit">' + chars(p.w) + '</p>' +
+        '<svg class="uh-ribbon" viewBox="0 0 318 70" aria-hidden="true"><path id="uhR" class="band" d="M-400 40C-350 10 -250 10 -200 40S-50 70 0 40 150 10 200 40 350 70 400 40 550 10 600 40 750 70 800 40"/>' +
+        '<text dy="4.5"><textPath href="#uhR" startOffset="0" textLength="1500" lengthAdjust="spacing">' + all +
+        '<animate attributeName="startOffset" from="0" to="-250" dur="7s" repeatCount="indefinite"/></textPath></text></svg></div>' +
+      '<div class="uh-h ms-el"><h4>Начинки</h4><small>что внутри<br>наших тортов</small><span>заказать</span></div>' +
+      '<div class="uh-row ms-el"><div><img src="img/try2/cake-slice.webp" alt="">шоколад<br>и вишня</div><div><img src="img/try2/cake-mus.webp" alt="">ягодный<br>мусс</div><div><img src="img/try2/cake-ecl.webp" alt="">эклеры</div><div><img src="img/try2/cake-mer.webp" alt="">меренги</div></div>' +
+      '<div class="uh-about ms-el"><img src="img/try2/cake-chef.webp" alt=""><b>О нас</b><span>как мы готовим</span></div>' +
+      '<div class="uh-cta ms-el">Заказать торт к субботе</div>'; } }
   };
 
   var form = $(".builder-form"), ms = $(".ms");
@@ -408,14 +418,14 @@
      Салон, школу и пекарню оформляем как название: «Студия «…»», если человек
      не написал слово сам. Психолог и юрист — можно просто имя. */
   var ASK = {
-    beauty: ["Название салона", "Например, Лепесток"],
-    psy: ["Ваше имя", "Например, Анна Смирнова"],
+    beauty: ["Название салона", "Например, Лоск"],
+    tutor: ["Ваше имя", "Например, Анна Смирнова"],
     auto: ["Название автосервиса", "Например, Гараж 42"],
     law: ["Название бюро или ваше имя", "Например, Право"],
     school: ["Название школы", "Например, Перемена"],
-    cafe: ["Название кафе или пекарни", "Например, Утро"]
+    cafe: ["Название кондитерской", "Например, Зефир"]
   };
-  var PREFIX = { beauty: "Студия", school: "Школа", cafe: "Пекарня" };
+  var PREFIX = { beauty: "Студия", school: "Школа", cafe: "Кондитерская" };
   var HAS_TYPE = /студи|салон|школ|кафе|пекарн|кофейн|бар\b|центр|«|"/i;
 
   function bizName() {
@@ -503,15 +513,40 @@
     wires();
   }
 
-  // поле названия живёт внутри выбранной плашки
+  // поле названия живёт внутри выбранной плашки; на телефоне — отдельной строкой под сферами
+  var b10Mob = matchMedia("(max-width: 680px)");
   function placeName() {
     if (!nameBox || !current) return;
     var plate = $('.sp[data-sp="' + current + '"]', form);
     $$(".sp", form).forEach(function (p) { p.classList.toggle("on", p === plate); });
-    plate.appendChild(nameBox);
+    if (b10Mob.matches) { if (nameBox.parentNode !== form) form.appendChild(nameBox); }
+    else plate.appendChild(nameBox);
     nameLabel.textContent = ASK[current][0];
     nameInput.placeholder = ASK[current][1];
   }
+  if (b10Mob.addEventListener) b10Mob.addEventListener("change", placeName);
+
+  // телефон: после выбора сферы показать сферы и телефон целиком на одном экране
+  var sideEl = $(".side", form);
+  function showPhone() {
+    if (!b10Mob.matches) return;
+    var pr = phoneEl.getBoundingClientRect(), sr = sideEl.getBoundingClientRect();
+    if (sr.top < 70 || pr.bottom > window.innerHeight - 8) {
+      var y = sr.top + window.scrollY - (parseFloat(getComputedStyle(sideEl).scrollMarginTop) || 84);
+      window.scrollTo({ top: y, behavior: reduce ? "auto" : "smooth" });
+    }
+    // выбранную сферу — в видимую часть строки
+    var on = $(".sp.on", sideEl);
+    if (on) {
+      var x = on.offsetLeft - 16, max = sideEl.scrollWidth - sideEl.clientWidth;
+      if (on.offsetLeft - sideEl.scrollLeft + on.offsetWidth > sideEl.clientWidth - 20 || on.offsetLeft - sideEl.scrollLeft < 0)
+        sideEl.scrollTo({ left: Math.max(0, Math.min(max, x)), behavior: reduce ? "auto" : "smooth" });
+    }
+  }
+  // когда строку сфер долистали до конца — убрать затухание справа
+  if (sideEl) sideEl.addEventListener("scroll", function () {
+    sideEl.classList.toggle("end", sideEl.scrollLeft + sideEl.clientWidth >= sideEl.scrollWidth - 4);
+  }, { passive: true });
 
   sphereChips.forEach(function (btn) {
     btn.addEventListener("click", function () {
@@ -522,6 +557,7 @@
       placeName();
       build();
       wires();
+      setTimeout(showPhone, 60);
     });
   });
   form.addEventListener("submit", function (e) { e.preventDefault(); build(); });
@@ -585,7 +621,7 @@
   render();
   // шрифты мини-сайтов догрузились — подогнать имя ещё раз
   if (document.fonts) {
-    Promise.all(['20px "Dela Gothic One"', '20px "Russo One"', '20px "Yeseva One"', '20px "Pacifico"', '800 20px "Unbounded"', '700 20px "Caveat"']
+    Promise.all(['20px "Prata"', '700 20px "Oswald"', '600 20px "Inter Tight"', '900 20px "Alumni Sans"', '800 20px "Unbounded"', '500 20px "Cormorant"', '20px "Marck Script"']
       .map(function (f) { return document.fonts.load(f).catch(function () {}); })).then(fitAll);
     document.fonts.addEventListener && document.fonts.addEventListener("loadingdone", fitAll);
   }
@@ -631,13 +667,34 @@
     };
     var krLen = function () { return kr.offsetHeight - krPin.offsetHeight; };
     var krScroll = function () {
-      if (!krWide.matches) { if (krCur !== 0) krSet(0); $$(".kr-chk li").forEach(function (li) { li.classList.add("ok"); }); return; }
+      if (!krWide.matches) { if (krCur < 0) krSet(0); return; }   // на телефоне шаги листаются пальцем вбок
       var len = krLen(), prog = len > 0 ? ((parseFloat(getComputedStyle(krPin).top) || 0) - kr.getBoundingClientRect().top) / len : 0;
       krSet(Math.max(0, Math.min(krSteps.length - 1, Math.floor(prog * krSteps.length))));
     };
+    /* Телефон: карточки шагов листаются пальцем вбок (как карусель),
+       окно сайта «Флора» и кружочки шагов меняются вместе с карточкой */
+    var krView = $(".kr-view");
+    var krStepW = function () { return krSteps.length > 1 ? krSteps[1].offsetLeft - krSteps[0].offsetLeft : krView.clientWidth; };
+    var krGo = function (i, smooth) { krView.scrollTo({ left: i * krStepW(), behavior: smooth && !krReduce ? "smooth" : "auto" }); };
+    krView.addEventListener("scroll", function () {
+      if (krWide.matches) return;
+      krSet(Math.max(0, Math.min(krSteps.length - 1, Math.round(krView.scrollLeft / krStepW()))));
+    }, { passive: true });
+    if (krWide.addEventListener) krWide.addEventListener("change", function () { if (!krWide.matches && krCur > 0) krGo(krCur, false); });
+    // при первом показе на телефоне карточка «подмигивает» влево — видно, что её можно листать
+    if (!krReduce && window.IntersectionObserver) new IntersectionObserver(function (es, o) {
+      if (!es[0].isIntersecting || krWide.matches || krView.scrollLeft > 0) return;
+      o.disconnect();
+      setTimeout(function () {
+        if (krView.scrollLeft > 0) return;
+        krView.style.scrollSnapType = "none";
+        krView.scrollTo({ left: 56, behavior: "smooth" });
+        setTimeout(function () { krView.scrollTo({ left: 0, behavior: "smooth" }); setTimeout(function () { krView.style.scrollSnapType = ""; }, 500); }, 450);
+      }, 700);
+    }, { threshold: .6 }).observe(krView);
     krPts.forEach(function (b, i) {
       b.addEventListener("click", function () {
-        if (!krWide.matches) { krSteps[i].scrollIntoView({ behavior: krReduce ? "auto" : "smooth", block: "center" }); return; }
+        if (!krWide.matches) { krGo(i, true); return; }
         var top = kr.getBoundingClientRect().top + window.scrollY + krLen() * (i + .5) / krSteps.length;
         window.scrollTo({ top: top, behavior: krReduce ? "auto" : "smooth" });
       });
@@ -807,7 +864,28 @@
     });
     t.addEventListener("pointermove", function (e) { var r = t.getBoundingClientRect(); t.style.setProperty("--mx", e.clientX - r.left + "px"); t.style.setProperty("--my", e.clientY - r.top + "px"); });
     t.addEventListener("pointerleave", function () { t.style.setProperty("--mx", "-300px"); });
+    // телефон: мышки нет — салютик по рамке, когда плитку нажали пальцем
+    t.addEventListener("pointerdown", function (e) {
+      if (e.pointerType === "mouse" || Date.now() - last < 1200) return;
+      last = Date.now(); edgeBurst(t);
+      t.classList.remove("flash"); void t.offsetWidth; t.classList.add("flash");
+    });
   });
+  // телефон: когда плитки «Почему со мной» появились на экране, рамки вспыхивают по очереди
+  // (каждый раз, когда раздел снова прокрутили до плиток)
+  var omGrid = $(".om-grid");
+  if (omGrid && !reduce && matchMedia("(hover: none)").matches && window.IntersectionObserver) {
+    var omShown = false;
+    new IntersectionObserver(function (es) {
+      var en = es[0];
+      if (!en.isIntersecting) { if (en.intersectionRatio === 0) omShown = false; return; }
+      if (omShown || en.intersectionRatio < .75) return;
+      omShown = true;
+      $$(".om-tile", omGrid).forEach(function (t, i) {
+        setTimeout(function () { edgeBurst(t); t.classList.remove("flash"); void t.offsetWidth; t.classList.add("flash"); }, 250 + i * 380);
+      });
+    }, { threshold: [0, .75] }).observe(omGrid);
+  }
 
   /* ================================================================
      Вопросы (23.11): строка поиска. Вопросы и ответы — здесь, в QS.
