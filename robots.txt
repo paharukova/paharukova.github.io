@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
-# старая версия сайта сохранена для истории, в поиск её не пускаем
 Disallow: /staraya/
 
 Sitemap: https://paharukova.github.io/sitemap.xml
