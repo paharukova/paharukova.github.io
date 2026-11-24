@@ -8,6 +8,7 @@
 
 /* ---------- Искорки по всей странице: холст за содержимым ---------- */
 .page-sparks { position: fixed; inset: 0; z-index: 0; width: 100%; height: 100%; pointer-events: none; }
+.page-sparks--top { z-index: 2; } /* салютики у черт под заголовками — поверх карточек, под шапкой */
 .nav { z-index: 30; }
 main, .foot { position: relative; z-index: 1; }
 

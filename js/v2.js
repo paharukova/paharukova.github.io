@@ -79,13 +79,19 @@
   //     крупные (ближние) — быстрее, мелкие (дальние) — медленнее.
   var pc = $(".page-sparks"), pctx = pc.getContext("2d"), PW = 0, PH = 0, psparks = [], bursts = [], popWait = 60;
   var lastY = window.scrollY;
+  // (24.11) второй прозрачный холст ПОВЕРХ страницы — только для салютиков у черт под заголовками:
+  // нижний холст лежит под содержимым, и тёмная карточка «Напишите мне» закрывала салютик
+  var tc = document.createElement("canvas"), tctx = tc.getContext("2d");
+  tc.className = "page-sparks page-sparks--top"; tc.setAttribute("aria-hidden", "true");
+  pc.parentNode.insertBefore(tc, pc.nextSibling);
   function pageResize() {
     var dpr = sparkDpr();
     PW = window.innerWidth; PH = window.innerHeight;
     // на телефоне холст сразу на всю высоту экрана: адресная строка прячется/появляется — холст не пересоздаём
-    if (PW < 700) { PH = Math.max(PH, window.screen && screen.height || 0); pc.style.height = PH + "px"; } else pc.style.height = "";
-    pc.width = PW * dpr; pc.height = PH * dpr;
+    if (PW < 700) { PH = Math.max(PH, window.screen && screen.height || 0); pc.style.height = tc.style.height = PH + "px"; } else pc.style.height = tc.style.height = "";
+    pc.width = tc.width = PW * dpr; pc.height = tc.height = PH * dpr;
     pctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    tctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     // на телефоне экран маленький — по прежней формуле выходило ~15 искорок, их почти не было видно
     var n = PW < 700 ? 34 : Math.round(Math.min(70, PW * PH / 20000));
     psparks = [];
@@ -121,22 +127,23 @@
       var cand = psparks.filter(function (q) { return !q.pop && q.z > .45 && q.y > PH * .1 && q.y < PH * .9; });
       if (cand.length) cand[Math.floor(Math.random() * cand.length)].pop = .01;
     }
-    // вспышки: искорки разлетаются из точки и гаснут
+    // вспышки: искорки разлетаются из точки и гаснут (top — на верхнем холсте, поверх карточек)
+    tctx.clearRect(0, 0, PW, PH);
     for (var j = bursts.length - 1; j >= 0; j--) {
-      var b = bursts[j];
+      var b = bursts[j], cx = b.top ? tctx : pctx;
       b.x += b.vx; b.y += b.vy - dy; b.vx *= .96; b.vy = b.vy * .96 + .015; b.life -= .016;
       if (b.life <= 0) { bursts.splice(j, 1); continue; }
-      pctx.beginPath();
-      pctx.fillStyle = "rgba(" + GOLD + "," + Math.min(1, b.life * 1.4).toFixed(3) + ")";
-      pctx.arc(b.x, b.y, b.r * (.5 + b.life * .5), 0, Math.PI * 2);
-      pctx.fill();
+      cx.beginPath();
+      cx.fillStyle = "rgba(" + GOLD + "," + Math.min(1, b.life * 1.4).toFixed(3) + ")";
+      cx.arc(b.x, b.y, b.r * (.5 + b.life * .5), 0, Math.PI * 2);
+      cx.fill();
     }
   }
-  function burst(x, y, n) {
+  function burst(x, y, n, top) {
     if (reduce) return;
     for (var i = 0; i < (n || 14); i++) {
       var ang = Math.random() * Math.PI * 2, sp = .6 + Math.random() * 2.2;
-      bursts.push({ x: x, y: y, vx: Math.cos(ang) * sp, vy: Math.sin(ang) * sp - .4, r: .8 + Math.random() * 1.6, life: .7 + Math.random() * .5 });
+      bursts.push({ x: x, y: y, vx: Math.cos(ang) * sp, vy: Math.sin(ang) * sp - .4, r: .8 + Math.random() * 1.6, life: .7 + Math.random() * .5, top: !!top });
     }
   }
 
@@ -195,7 +202,7 @@
       if (svg) setTimeout(function () {
         if (!el.classList.contains("drawn")) return;
         var r = svg.getBoundingClientRect();
-        if (r.bottom > 0 && r.top < window.innerHeight) burst(r.right, r.top + r.height / 2, 12);
+        if (r.bottom > 0 && r.top < window.innerHeight) burst(r.right, r.top + r.height / 2, 12, true);
       }, 1200);
     });
   }, { threshold: .6 });
