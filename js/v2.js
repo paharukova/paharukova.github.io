@@ -42,8 +42,11 @@
   var hero = $(".hero"), heroCanvas = $(".sparks");
   var heroVisible = true;
   var hctx = heroCanvas.getContext("2d"), HW = 0, HH = 0, hsparks = [];
+  // на телефоне холсты с искорками рисуем в обычной чёткости: точки всё равно мягкие,
+  // а телефону в 4 раза меньше работы на каждом кадре — прокрутка не тормозит (24.11)
+  var sparkDpr = function () { return window.innerWidth < 700 ? 1 : Math.min(window.devicePixelRatio || 1, 2); };
   function heroResize() {
-    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var dpr = sparkDpr();
     HW = hero.clientWidth; HH = hero.clientHeight;
     heroCanvas.width = HW * dpr; heroCanvas.height = HH * dpr;
     hctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -77,8 +80,10 @@
   var pc = $(".page-sparks"), pctx = pc.getContext("2d"), PW = 0, PH = 0, psparks = [], bursts = [], popWait = 60;
   var lastY = window.scrollY;
   function pageResize() {
-    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var dpr = sparkDpr();
     PW = window.innerWidth; PH = window.innerHeight;
+    // на телефоне холст сразу на всю высоту экрана: адресная строка прячется/появляется — холст не пересоздаём
+    if (PW < 700) { PH = Math.max(PH, window.screen && screen.height || 0); pc.style.height = PH + "px"; } else pc.style.height = "";
     pc.width = PW * dpr; pc.height = PH * dpr;
     pctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     // на телефоне экран маленький — по прежней формуле выходило ~15 искорок, их почти не было видно
@@ -164,7 +169,12 @@
   function kick() { if (!running && !reduce) { running = true; requestAnimationFrame(loop); } }
   if (!reduce) {
     heroResize(); pageResize();
-    window.addEventListener("resize", function () { heroResize(); pageResize(); });
+    var lastW = window.innerWidth;
+    window.addEventListener("resize", function () {
+      // на телефоне при прокрутке меняется только высота (адресная строка) — искорки не трогаем
+      if (window.innerWidth < 700 && window.innerWidth === lastW) return;
+      lastW = window.innerWidth; heroResize(); pageResize();
+    });
     document.addEventListener("visibilitychange", kick);
     new IntersectionObserver(function (e) { heroVisible = e[0].isIntersecting; }).observe(hero);
     kick();
@@ -976,7 +986,15 @@
   (function () {
     var kl = $("#kLine"); if (!kl) return;
     if (reduce) { kl.classList.add("go"); return; }
-    new IntersectionObserver(function (es, o) { if (es[0].isIntersecting) { o.disconnect(); kl.classList.add("go"); } }, { threshold: .9 }).observe(kl);
+    new IntersectionObserver(function (es, o) {
+      if (!es[0].isIntersecting) return;
+      o.disconnect(); kl.classList.add("go");
+      // когда черта дорисована — в её конце салютик, как у черты под заголовками (24.11)
+      setTimeout(function () {
+        var r = kl.getBoundingClientRect();
+        if (r.bottom > 0 && r.top < window.innerHeight) burst(r.right - 6, r.top + r.height / 2, 24);
+      }, 1500);
+    }, { threshold: .9 }).observe(kl);
   })();
 
   /* Подвал (23.11): кнопка «Наверх» */
