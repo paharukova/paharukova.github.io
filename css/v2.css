@@ -1277,3 +1277,13 @@ html.pv-lock { overflow: hidden; }
   .kl-spark { width: 5px; height: 5px; margin: -2.5px; right: 2px; }
   @keyframes klFly { 0% { opacity: 1; transform: translate(0, 0); } 100% { opacity: 0; transform: translate(calc(-1 * var(--dx)), var(--dy)); } }
 }
+
+/* 7. (28.11) Первый экран на телефоне: кнопка «Получить прототип» видна сразу, без листания.
+   Фото чуть ниже, подзаголовок — только первое предложение (второе остаётся на компьютере). */
+@media (max-width: 860px) {
+  .hero-photo { height: 50svh; }
+  .hero-text { margin-top: -12svh; }
+  .hero .sub { margin-top: 18px; }
+  .hero .sub-more { display: none; }
+  .hero .actions { margin-top: 24px; }
+}

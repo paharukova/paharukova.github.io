@@ -947,8 +947,9 @@
         : "<li>" + ICO + "<span>Такого вопроса пока нет&nbsp;— задайте его мне в&nbsp;контактах ниже ↓</span></li>";
       sug.hidden = false;
     };
-    var show = function (i) {
-      typed = true; inp.value = plain(QS[i].q); sug.hidden = true;
+    // quiet — показать ответ сразу при открытии страницы (28.11): строка поиска не трогается и продолжает сама печатать вопросы
+    var show = function (i, quiet) {
+      if (!quiet) { typed = true; inp.value = plain(QS[i].q); sug.hidden = true; }
       $$("button", pop).forEach(function (b, k) { b.classList.toggle("on", k === i); });
       ans.innerHTML = '<div class="qs-ans"><small>Ответ Татьяны</small><h3>' + QS[i].q + "</h3><p>" + QS[i].a + '</p><a href="#contact">Остался вопрос? Напишите мне ↓</a></div>';
     };
@@ -956,6 +957,7 @@
       var b = document.createElement("button"); b.type = "button"; b.textContent = x.t;
       b.addEventListener("click", function () { show(i); }); pop.appendChild(b);
     });
+    show(0, true); // один ответ (про сроки) открыт сразу — его видно, даже если просто листать
     inp.addEventListener("focus", function () { typed = true; inp.placeholder = "Например: сколько стоит домен?"; });
     inp.addEventListener("input", renderSug);
     inp.addEventListener("keydown", function (e) {
